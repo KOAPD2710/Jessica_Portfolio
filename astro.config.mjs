@@ -6,6 +6,7 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
     output: 'server',
     adapter: vercel({
+        imageService: true,
         webAnalytics: { enabled: true }
     }),
     integrations: [react({
@@ -15,7 +16,7 @@ export default defineConfig({
         prefetchAll: true,
         defaultStrategy: 'viewport'
     },
-    image: {
-        service: passthroughImageService(),
-    },
+    // image: {
+    //     service: passthroughImageService(),
+    // },
 });
