@@ -1,0 +1,79 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.home {
+    &-project {
+        padding-block: 15.5rem 0rem;
+        contain: paint;
+
+        &-heading {
+            grid-column: 1/-1;
+
+            display: flex;
+            align-items: end;
+            column-gap: 3rem;
+        }
+
+        &-count {
+            &-wrapper {
+                flex-shrink: 0;
+                margin-bottom: 2rem;
+                letter-spacing: -0.02em;
+
+                opacity: .9;
+            }
+        }
+
+        &-list {
+            grid-column: 1/-1;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: var(--grid-gap);
+            row-gap: 6rem;
+
+            margin-top: 12rem;
+        }
+
+        &-line {
+            grid-column: 1/-1;
+            
+            margin-top: 8rem;
+
+            opacity: .2;
+        }
+    }
+}
+
+
+.project {
+    &-item {
+        &-thumb {
+            margin-bottom: 2.4rem;
+
+            &-inner {
+                height: 53.9rem;
+            }
+        }
+
+        &-heading {
+            display: flex;
+            column-gap: .8rem;
+            align-items: end;
+
+            margin-bottom: 1.2rem;
+        }
+        &-scope {
+            opacity: .65;
+        }
+
+        &-no {
+            margin-left: auto;
+            opacity: .65;
+        }
+
+        &-desc {
+            line-height: 1.4em;
+            opacity: .9;
+        }
+    }
+}

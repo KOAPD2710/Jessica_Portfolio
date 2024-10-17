@@ -1,0 +1,61 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+
+.home {
+    &-hero {
+        @include size(100%, 100svh);
+        padding-block: 6.7rem 5rem;
+
+        .container {
+            height: 100%;
+
+            grid-template-rows: auto 1fr auto;
+
+            > * {
+                height: fit-content;
+            }
+        }
+
+        &-top {
+            grid-column: 1/4;
+            grid-row: 1/2;
+
+            margin-top: 12rem;
+        }
+
+        &-img {
+            @include size(43.5rem, 24.1rem);
+
+            &-wrapper {
+                grid-column: 13/-1;
+                grid-row: 2/3;
+
+                margin-block: auto;
+            }
+        }
+
+
+        &-title {
+            grid-column: 1/13;
+            grid-row: 3/4;
+        }
+
+        &-label {
+            margin-bottom: 1.2rem;
+        }
+
+        &-desc {
+            opacity: .65;
+        }
+
+        &-scroll {
+            grid-column: 15/-1;
+            grid-row: 3/4;
+            align-self: end;
+            text-align: end;
+
+            opacity: .65;
+        }
+    }
+}

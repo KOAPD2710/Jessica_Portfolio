@@ -1,0 +1,123 @@
+html {
+    font-size: 0.5208333333vw;
+
+    @include md {
+        font-size: 1.1990407674vw;
+    }
+    @include sm {
+        font-size: 2.5641025641vw;
+    }
+}
+
+html {
+    font-family: 'HelveticaNeue', sans-serif;
+    color: $cl-black;
+}
+
+body {
+    @include text(22);
+}
+
+// Heading
+:root {
+    --fs-h0: 20rem;
+    --lh-h0: 1em;
+    --ls-h0: -0.02em;
+
+    --fs-h1: 16rem;
+    --lh-h1: 1em;
+    --ls-h1: -0.02em
+
+    --fs-h2: 9rem;
+    --lh-h2: 1em;
+    --ls-h2: -0.01em
+
+    --fs-h3: 3.6rem;
+    --lh-h3: 1.1em;
+
+    --fs-h4: 4rem;
+    --lh-h4: 1em;
+
+    --fs-h5: 3.2rem;
+    --lh-h5: 1em;
+
+    --fs-h6: 2rem;
+    --lh-h6: 1.2em;
+}
+
+@for $i from 0 through 6 {
+    h#{$i}, .h#{$i} {
+        @include text(h#{$i});
+        font-weight: normal;
+    }
+}
+
+// Body text
+$txtSizes: 16, 18, 22, 24, 32, 44;
+
+:root {
+
+    --fs-16: 1.6rem;
+    --lh-16: 1.2em;
+    --ls-16: -0.02em;
+
+    --fs-18: 1.8rem;
+    --lh-18: 1.2em;
+    --ls-18: -0.02em;
+
+    --fs-22: 2.2rem;
+    --lh-22: 1.2em;
+
+    --fs-24: 2.4rem;
+    --lh-24: 1.3em;
+
+    --fs-32: 3.2rem;
+    --lh-32: 1.2em;
+
+    --fs-44: 4.4rem;
+    --lh-44: 1.2em;
+}
+
+.txt {
+    &-light {
+        font-weight: 300;
+    }
+
+    &-reg {
+        font-weight: 400;
+    }
+
+    &-med {
+        font-weight: 500;
+    }
+
+    &-semi {
+        font-weight: 600;
+    }
+
+    &-bold {
+        font-weight: 700;
+    }
+
+    &-up {
+        text-transform: uppercase;
+    }
+
+    &-italic {
+        font-style: italic;
+    }
+
+    &-nor {
+        font-style: normal;
+    }
+
+    &-orange {
+        color: $cl-orange;
+    }
+
+    @each $size in $txtSizes {
+        &-#{$size} {
+            @include text(#{$size});
+        }
+    }
+}

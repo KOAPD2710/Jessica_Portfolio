@@ -1,0 +1,9 @@
+---
+import HomeHeroComponent from "."
+import { Image } from 'astro:assets';
+import HeroImage from '@assets/home-hero-1.jpg';
+---
+
+<HomeHeroComponent client:load>
+    <Image src={HeroImage} alt="" slot="HeroImage" class="img img-fill"/>
+</HomeHeroComponent>

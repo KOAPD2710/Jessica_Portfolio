@@ -1,0 +1,17 @@
+$cl-orange: #FF3D00;
+$cl-black: #212120;
+$cl-white: #F3F0E8;
+
+:root {
+    --cl-orange: 255, 61, 0;
+    --cl-black: 33, 33, 32;
+    --cl-white: 243, 240, 232;
+
+    --cl-black-90: rgba(var(--cl-black), .9);
+    --cl-black-80: rgba(var(--cl-black), .8);
+    --cl-black-65: rgba(var(--cl-black), .65);
+    --cl-black-50: rgba(var(--cl-black), .5);
+    --cl-black-30: rgba(var(--cl-black), .3);
+    --cl-black-20: rgba(var(--cl-black), .2);
+    --cl-black-15: rgba(var(--cl-black), .15);
+}

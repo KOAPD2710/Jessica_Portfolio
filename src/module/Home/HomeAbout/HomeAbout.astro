@@ -1,0 +1,35 @@
+---
+import HomeAboutComponent from ".";
+import Image from "astro/components/Image.astro";
+import ImgAvatar from '@assets/home-about-1.jpg';
+import ArrUpRight from '@assets/svg/arrow-up-right.svg?raw';
+
+const Title = 'A little bit about me';
+const PreambleLabel = 'WELL,...';
+const ExpLabel = 'EXPERIENCE';
+const ExpList  = [
+    {
+        name: 'Bearplus Studio',
+        role: 'UX/UI designer',
+        location: 'Ho Chi Minh, VN',
+        milestone: 'Mar, 2023 - Sep, 2024'
+    },
+    {
+        name: 'Capi Agency',
+        role: 'UX/UI designer',
+        location: 'Ha Noi, VN',
+        milestone: 'Aug, 2022 - Jan, 2023'
+    }
+]
+---
+
+<HomeAboutComponent
+    Title={Title}
+    PreambleLabel={PreambleLabel}
+    ExpLabel={ExpLabel}
+    ExpList={ExpList}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+>
+    <Image src={ImgAvatar} alt="" class="img img-fill" slot="Avatar"/>
+    <Fragment set:html={ArrUpRight} slot="ArrUpRight"/>
+</HomeAboutComponent>
