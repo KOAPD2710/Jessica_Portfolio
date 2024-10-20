@@ -76,10 +76,24 @@ function getTranslate(x, y, z) {
     return `translate3d(${x}px, ${y}px, ${z}px)`;
 }
 const typeSplit = {
-    lineClass: 'split-line',
-    wordClass: 'split-word',
-    charClass: 'split-char',
-    tagName: 'span'
+    chars: {
+        types: 'lines, words, chars',
+        lineClass: 'split-line',
+        wordClass: 'split-word',
+        charClass: 'split-char',
+        tagName: 'span'
+    },
+    words: {
+        types: 'lines, words',
+        lineClass: 'split-line',
+        wordClass: 'split-word',
+        tagName: 'span'
+    },
+    lines: {
+        types: 'lines',
+        lineClass: 'split-line',
+        tagName: 'span'
+    },
 };
 const parseRem = (input) => {
     return input / 10 * parseFloat(window.getComputedStyle(dom('html')).getPropertyValue("font-size"));

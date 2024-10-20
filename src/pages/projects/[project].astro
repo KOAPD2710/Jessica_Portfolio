@@ -1,0 +1,28 @@
+---
+import Layout from '@/layouts/Layout.astro';
+
+const data = [
+  {params: {project: 'clifford'}, asdads: 'asdadasd'},
+  {params: {project: 'rover'}, asdads: 'asdadasd'},
+  {params: {project: 'spot'}, asdads: 'asdadasd'},
+]
+export function getStaticPaths() {
+  return data.map((item) => {
+        return {
+            params: { project: item },
+            props: { item },
+        };
+    });
+}
+
+const { project } = Astro.params;
+const { item } = Astro.props;
+
+
+console.log(Astro.params, Astro.props);
+
+
+---
+<Layout>
+  <h1>{project}</h1>
+</Layout>

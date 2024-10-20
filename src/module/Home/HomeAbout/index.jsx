@@ -4,11 +4,11 @@ import './style.scss';
 const HomeAbout = ({ ...props }) => {
 
     useEffect(() => {
-        console.log(props);
+        // console.log(props);
     }, [])
 
     return (
-        <section className="home-about">
+        <section className="home-about" data-theme="light" id="homeAbout">
             <div className="container grid">
                 <h1 className="home-about-title">{props.Title}</h1>
                 <div className="home-about-preamble">

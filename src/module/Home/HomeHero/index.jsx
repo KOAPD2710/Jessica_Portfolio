@@ -4,7 +4,7 @@ import { useEffect } from "react"
 const HomeHero = ({ HeroImage, ...props }) => {
 
     return (
-        <section className="home-hero">
+        <section className="home-hero" data-theme="light" id="homeHero">
             <div className="container grid">
                 <div className="home-hero-top">
                     <div className="home-hero-label txt-24 txt-up ">(UX/UI DESIGNER)</div>

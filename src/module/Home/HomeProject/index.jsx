@@ -4,7 +4,7 @@ import './style.scss';
 const HomeProject = ({ Project, ...props }) => {
 
     return (
-        <section className="home-project">
+        <section className="home-project" data-theme="light" id="homeProject">
             <div className="container grid">
                 <div className="home-project-heading">
                     <h1 className="home-project-title">Selected projects</h1>

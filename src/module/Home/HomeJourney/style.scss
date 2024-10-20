@@ -5,17 +5,25 @@
 
 .home {
     &-journey {
-        // height: 20svh;
+        --clip-top: 0rem;
+        --clip-bot: 0rem;
+
 
         background-color: rgb(var(--cl-black));
         color: $cl-white;
 
-        padding-block: 21rem 31.2rem;
+        padding-block: 31rem 41.2rem;
+
+        clip-path: inset(var(--clip-top) 0% var(--clip-bot) 0%);
 
         &-line {
             &-wrapper {
-                grid-column: 5/-1;
+                grid-column: 5/16;
                 grid-row: 1/2;
+                height: 1px;
+                background-color: $cl-white;
+
+                margin-bottom: 12rem;
             }
         }
 
@@ -26,10 +34,27 @@
 
         &-content {
             grid-column: 5/16;
-            opacity: .15;
+            display: grid;
 
             &-inner {
-                // text-indent: 45rem;
+                position: relative;
+                grid-column: 1/2;
+                grid-row: 1/2;
+                width: 100%;
+
+                &.top {
+                    z-index: 2;
+                    // opacity: 0;
+                }
+                
+                &.bot {
+                    z-index: 1;
+                    opacity: .15;
+                }
+            }
+
+            .txt-spacer {
+                width: 60rem;
             }
         }
     }

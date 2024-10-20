@@ -12,7 +12,13 @@
     pointer-events: none;
     user-select: none;
 
-    // display: none;
+
+    &.visible {
+        display: unset;
+    }
+    &.hidden {
+        display: none;
+    }
 
     &-col {
         background-color: red;
