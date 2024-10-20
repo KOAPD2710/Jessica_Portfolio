@@ -1,0 +1,23 @@
+---
+import FooterComponent from '.'
+
+const Data = {
+    Email: 'anhphuongnguyen101098@gmail.com',
+    Social: [
+        {
+            name: 'LinkedIn',
+            link: 'asdasdasd'
+        },
+        {
+            name: 'Facebook',
+            link: 'asdasdasd'
+        }
+        
+    ]
+}
+---
+
+<FooterComponent
+    {...Data}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+/>

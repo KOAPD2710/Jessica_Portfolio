@@ -1,3 +1,6 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
 .header {
     position: fixed;
     top: 0;
@@ -5,6 +8,8 @@
     width: 100%;
     padding-block: 2rem;
     z-index: 999;
+    mix-blend-mode: difference;
+    filter: invert(1);
 
     &-logo {
         grid-column: 1/3;

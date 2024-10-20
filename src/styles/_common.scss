@@ -6,12 +6,6 @@
     padding: 0;
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
-    animation-duration: .6s;
-}
-
-
 html {
     font-kerning: none;
     font-feature-settings: 'kern' off;
@@ -22,10 +16,6 @@ html {
     -webkit-text-rendering: optimizeSpeed;
     text-rendering: optimizeSpeed;
     background-color: $cl-white;
-
-    &.lenis {
-        height: auto;
-    }
 }
 
 .main {
@@ -36,24 +26,6 @@ html {
     // &.on-load {
     //     opacity: 0;
     // }
-}
-
-.lenis {
-    &.lenis-smooth {
-        scroll-behavior: auto;
-    }
-
-    &.lenis-smooth [data-lenis-prevent] {
-        overscroll-behavior: contain;
-    }
-
-    &.lenis-stopped {
-        overflow: hidden;
-    }
-
-    &.lenis-scrolling iframe {
-        pointer-events: none;
-    }
 }
 
 html {
@@ -247,29 +219,28 @@ button {
     }
 }
 
-.content {
-    &-bg {
-        position: relative;
+.txt {
+    &-gradient {
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(to right, red 0%, blue 100%);
+    }
 
-        .is-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: .2;
-            z-index: -1;
-        }
+    &-spacer {
+        display: inline-block;
+    }
+
+    &-clipLine {
+        --size: 0%;
 
         .split-line {
             clip-path: inset(0% var(--size) 0% 0%);
         }
-    }
-}
 
-.txt {
-    &-clip {
-        -webkit-background-clip: text;
-        background-clip: text;
-        -webkit-text-fill-color: transparent;
+        // .split-word {
+        //     clip-path: inset(0% var(--size) 0% 0%);
+        // }
     }
 }
 

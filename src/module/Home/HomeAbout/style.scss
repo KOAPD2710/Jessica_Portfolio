@@ -115,7 +115,7 @@
 
             &-sticky {
                 position: sticky;
-                top: calc(50svh - 34.7rem / 2);
+                top: calc(100svh - 34.7rem - 4rem);
 
                 display: flex;
                 flex-direction: column;

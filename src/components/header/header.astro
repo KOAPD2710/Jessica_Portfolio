@@ -5,16 +5,16 @@ import HeaderComponent from ".";
 const ListMenu = [
     {
         name: 'projects',
-        link: '/projects'
+        link: '#homeProject'
     },
     {
         name: 'about',
-        link: '/about'
+        link: '#homeAbout'
     },
     {
         name: 'contact',
-        link: '/contact'
+        link: '#contact'
     }
 ]
 ---
-<HeaderComponent listMenu={ListMenu}/>
+<HeaderComponent listMenu={ListMenu} client:visible/>
