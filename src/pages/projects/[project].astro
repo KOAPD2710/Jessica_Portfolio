@@ -1,28 +1,25 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import { getAllByType } from '@/js/core/prismic';
 
-const data = [
-  {params: {project: 'clifford'}, asdads: 'asdadasd'},
-  {params: {project: 'rover'}, asdads: 'asdadasd'},
-  {params: {project: 'spot'}, asdads: 'asdadasd'},
-]
-export function getStaticPaths() {
-  return data.map((item) => {
-        return {
-            params: { project: item },
-            props: { item },
-        };
-    });
+export const prerender = true;
+export async function getStaticPaths() {
+  const allProjects= await getAllByType("project");
+  return allProjects.map((item) => {
+    return {
+      params: { project: item.uid },
+      props: {item}
+    } 
+  });
 }
 
 const { project } = Astro.params;
 const { item } = Astro.props;
 
-
-console.log(Astro.params, Astro.props);
-
-
+import ProjectDetailHero from '@module/ProjectDetail/ProjectDetailHero/ProjectDetailHero.astro';
+import ProjectDetailBody from '@module/ProjectDetail/ProjectDetailBody/ProjectDetailBody.astro';
 ---
-<Layout>
-  <h1>{project}</h1>
+<Layout title={`Project ${item.data.name[0].text}`}>
+  <ProjectDetailHero data={item}/>
+  <ProjectDetailBody/>
 </Layout>

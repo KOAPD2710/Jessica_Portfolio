@@ -34,7 +34,7 @@ export default function GridDebugger() {
         <div className={cn('testplace', isGridVisible ? 'visible' : 'hidden')}>
             <div className="container grid">
                 {Array.from({ length: 16 }).map((__, index) =>
-                    <div key={index} className="testplace-col"></div>
+                    <div key={index} className="testplace-col"/>
                 )}
             </div>
         </div>

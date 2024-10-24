@@ -7,14 +7,14 @@ export default function Header({ listMenu, ...props }) {
     useEffect(() => {
         const lenis = getLenis();
 
-        console.log(lenis);
+        // console.log(lenis);
 
     }, [])
 
     return (
         <header className="header">
             <div className="container grid">
-                <a href="." className="header-logo">
+                <a href="/" className="header-logo">
                     <div className="header-logo-txt txt-up txt-med">phgg ng</div>
                 </a>
                 <div className="header-label txt-up txt-med">PORTFOLIO 2024</div>
