@@ -1,9 +1,27 @@
 ---
 import ProjectDetailHeroComponent from './'
+
+import { isEmpty } from '@/js/utils'
+
+const ListInfo = [
+    !isEmpty(Astro.props.data.role) && {
+        ...Astro.props.data.role[0],
+        name: 'Role'
+    },
+    !isEmpty(Astro.props.data.team) && {
+        ...Astro.props.data.team[0],
+        name: 'Team'
+    },
+    !isEmpty(Astro.props.data.category) && {
+        ...Astro.props.data.category[0],
+        name: 'Category'
+    }
+].filter(Boolean);
 ---
 
 
 <ProjectDetailHeroComponent 
+    ListInfo={ListInfo}
     {...Astro.props}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 />

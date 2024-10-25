@@ -1,42 +1,39 @@
 const dom = (el, toEl = true) => {
-    let allEl = document.querySelectorAll(el)
+    const allEl = document.querySelectorAll(el)
     if (allEl.length === 1) {
-        return toEl ? allEl[0] : allEl
-    } else {
-        return allEl
+        return toEl ? allEl[0] : allEl;
     }
+    return allEl;
 }
 const addEvent = (el, event, callback) => {
     el.addEventListener(event, callback)
 }
 const addEventAll = (arr, event, callback) => {
-    arr.forEach(el => {
-        el.addEventListener(event, callback)
-    })
+    for (const el of arr) {
+        el.addEventListener(event, callback);
+    }
 }
 const getIndex = (el) => {
     if (typeof el !== 'string') {
-        return [...el.parentNode.children].indexOf(el)
-    } else {
-        return [...dom(el).parentNode.children].indexOf(dom(el))
+        return [...el.parentNode.children].indexOf(el);
     }
+    return [...dom(el).parentNode.children].indexOf(dom(el));
 }
 const offset = (el) => {
-    let box = el.getBoundingClientRect();
-    let docElem = document.documentElement;
+    const box = el.getBoundingClientRect();
+    const docElem = document.documentElement;
     return {
         top: box.top + window.scrollY - docElem.clientTop,
         left: box.left + window.scrollX - docElem.clientLeft
     };
 }
 function getRotationDegrees(element) {
-    let props = element.style.transform.match(/rotate\((\d+)(.+)\)/)
+    const props = element.style.transform.match(/rotate\((\d+)(.+)\)/)
     if (props) {
-        let [a, b, c] = props.slice(1)
-        return parseFloat(b)
-    } else {
-        return 0;
-    }
+        const [a, b, c] = props.slice(1)
+        return Number.parseFloat(b)
+    } 
+    return 0;
 }
 function generateHtmlFromJson(jsonData) {
     let htmlString = "";
@@ -44,24 +41,19 @@ function generateHtmlFromJson(jsonData) {
     function processElement(element) {
         switch (element.type) {
             case "h2":
-                htmlString += `<h2 data-scrollTo=${encodeURI(element.content)} >${element.content}</h2>`;
-                break;
+                return `<h2 data-scrollTo=${encodeURI(element.content)} >${element.content}</h2>`
             case "paragraph":
-                htmlString += `<p>${element.content}</p>`;
-                break;
+                return`<p>${element.content}</p>`;
             case "ul":
-                htmlString += "<ul>";
-                element.content.forEach((li) => {
-                    htmlString += `<li>${li.content}</li>`;
-                });
-                htmlString += "</ul>";
-                break;
-            default:
-                break;
+                for (const li of element.content) {
+                    return `<li>${li.content}</li>`;
+                }
         }
     }
 
-    jsonData.forEach((el) => processElement(el));
+    for (const el of jsonData) {
+        htmlString += processElement(el);
+    }
 
     return htmlString;
 }
@@ -96,10 +88,10 @@ const typeSplit = {
     },
 };
 const parseRem = (input) => {
-    return input / 10 * parseFloat(window.getComputedStyle(dom('html')).getPropertyValue("font-size"));
+    return input / 10 * Number.parseFloat(window.getComputedStyle(dom('html')).getPropertyValue("font-size"));
 }
 const parseToRem = (input) => {
-    return input * parseFloat(window.getComputedStyle(dom('html')).getPropertyValue("font-size")) / 100;
+    return input * Number.parseFloat(window.getComputedStyle(dom('html')).getPropertyValue("font-size")) / 100;
 }
 const lerp = (x, y, a = 0.1) => x * (1 - a) + y * a;
 const clamp = (a, min = 0, max = 1) => Math.min(max, Math.max(min, a));
@@ -107,13 +99,13 @@ const invlerp = (x, y, a) => clamp((a - x) / (y - x));
 const range = (x1, y1, x2, y2, a) => lerp(x2, y2, invlerp(x1, y1, a));
 const sawtooth = (x, fract) => x % fract;
 
-const xSetter = (el) => gsap.quickSetter(el, 'x', `px`);
+const xSetter = (el) => gsap.quickSetter(el, 'x', 'px'); // Removed template literals
 const xGetter = (el) => gsap.getProperty(el, 'x');
 
-const ySetter = (el) => gsap.quickSetter(el, 'y', `px`);
+const ySetter = (el) => gsap.quickSetter(el, 'y', 'px');
 const yGetter = (el) => gsap.getProperty(el, 'y');
 
-const rotSetter = (el) => gsap.quickSetter(el, 'rotate', `deg`);
+const rotSetter = (el) => gsap.quickSetter(el, 'rotate', 'deg');
 const rotGetter = (el) => gsap.getProperty(el, 'rotate');
 
 const scaleXSetter = (el) => gsap.quickSetter(el, 'scaleX');
@@ -121,10 +113,23 @@ const scaleXGetter = (el) => gsap.getProperty(el, 'scaleX');
 
 function debounce(func, delay = 100) {
     let timer;
-    return function (event) {
+    return (event) => {
         if (timer) clearTimeout(timer);
         timer = setTimeout(func, delay, event);
     };
+}
+
+function isEmpty(data) {
+    if
+        (data === null
+        || (typeof data === 'undefined')
+        || (typeof data === 'string' && data.trim().length === 0)
+        || (typeof data === 'object' && Object.keys(data).length === 0)
+        || (typeof data === 'number' && Number.isNaN(data))
+        || (typeof data === 'number' && !Number.isFinite(data))
+        || (Array.isArray(data) && data.length === 0))
+        return true;
+    return false;
 }
 
 export {
@@ -153,5 +158,6 @@ export {
     rotSetter,
     rotGetter,
     scaleXSetter,
-    scaleXGetter
+    scaleXGetter,
+    isEmpty
 }

@@ -1,0 +1,33 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.proj-dtl-next {
+    position: relative;
+    padding-block: 8rem;
+    background-color: $cl-black;
+
+    color: $cl-white;
+    contain: paint;
+
+
+    &-label {
+        grid-column: 1/-1;
+        opacity: .7;
+
+        margin-bottom: 4.5rem;
+    }
+
+    &-list {
+        grid-column: 1/-1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .line {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        opacity: .2;
+    }
+}

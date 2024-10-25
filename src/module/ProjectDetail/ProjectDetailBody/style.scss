@@ -1,2 +1,11 @@
 @use '@styles/mixins' as *;
 @use '@styles/colors' as *;
+
+
+.proj-dtl-body {
+
+    padding-block: 10rem 12rem;
+    &-content {
+        grid-column: 8/-1;
+    }
+}

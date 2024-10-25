@@ -37,7 +37,7 @@ const ProjectItem = ({ ...props }) => {
             </div>
             <div className="project-item-heading">
                 <div className="project-item-name txt txt-32">{name[0].text}</div>
-                <div className="project-item-scope">({category[0].text}, {role[0].text})</div>
+                <div className="project-item-scope">({category[0]?.text}{role[0]?.text && `, ${role[0].text}`})</div>
                 <div className="project-item-no">{(No + 1).toString().padStart(2, '0')}</div>
             </div>
             <div className="project-item-desc">

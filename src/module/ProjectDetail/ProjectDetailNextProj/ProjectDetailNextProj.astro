@@ -1,0 +1,18 @@
+---
+import ProjectDetailNextProjComponent from './'
+import { getByUID } from '@/js/core/prismic';
+const { currentProj, listProj } = Astro.props;
+
+const ListProjFilterd = await Promise.all(
+    listProj.filter(proj => proj !== currentProj).map(async proj => {
+        const dataPage = await getByUID("project", proj);
+        return dataPage;
+    })
+);
+---
+
+
+<ProjectDetailNextProjComponent 
+    list={ListProjFilterd}
+    client:visible={{ rootMargin: "100% 0px 100% 0px" }}
+/>

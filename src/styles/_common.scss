@@ -243,23 +243,3 @@ button {
         // }
     }
 }
-
-.richtext {
-    @for $i from 0 through 6 {
-        h#{$i},
-        .h#{$i} {
-            text-transform: uppercase;
-            font-weight: 900
-        }
-    }
-
-    &>*:last-child {
-        margin-bottom: 0;
-    }
-
-    p,
-    ul,
-    li {
-        @include text(20);
-    }
-}
