@@ -6,6 +6,8 @@ import Theme from "@/components/theme/theme.astro";
 
 import GridDebugger from "@/components/gridDebugger/gridDebugger.astro";
 import MainScript from "@/js/main";
+
+import ViewTransitions from "astro/components/ViewTransitions.astro";
 const { title } = Astro.props;
 ---
 
@@ -20,7 +22,6 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	<body>
-
 		<script>
 			import gsap from "gsap";
 			import ScrollTrigger from "gsap/ScrollTrigger";
@@ -39,12 +40,13 @@ const { title } = Astro.props;
 			})
 		</script>
 		<!-- <Theme /> -->
+		 <ViewTransitions/>
 		<Header/>
 		<main class="main on-load">
 			<slot />
 		</main>
 		<Footer/>
 		<GridDebugger/>
-		<MainScript client:only/>
+		<MainScript client:only="MainScript"/>
 	</body>
 </html>

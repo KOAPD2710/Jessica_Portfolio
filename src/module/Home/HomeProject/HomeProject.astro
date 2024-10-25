@@ -1,44 +1,18 @@
 ---
 import HomeProjectComponent from '.';
-import ProjectImg1 from '@assets/project-1.jpg';
-import ProjectImg2 from '@assets/project-2.jpg';
-import ProjectImg3 from '@assets/project-3.jpg';
-import ProjectImg4 from '@assets/project-4.jpg';
 
+import { getAllByType } from '@/js/core/prismic';
+const allProjects= await getAllByType("project");
 
-const AllProjects = [
-    {
-        name: 'YBL.AI',
-        scope: 'AI Copilot, UX/UI designer',
-        describe: "YBL.AI is an enterprise-grade AI Copilot designed to assist with a wide range of daily tasks. I participated in the project and developed design from its early stages.",
-        thumbnail: ProjectImg1,
-        link: 'abc'
-    },
-    {
-        name: 'Expense Management',
-        scope: 'UX case study, leader',
-        describe: "Expense management was one of the key topics in a series of innovation solution projects for ZaloPay during the UX Foundation course. I took on the role of team leader and developed the solutions following the design thinking process.",
-        thumbnail: ProjectImg2,
-        link: 'abc'
-    },
-    {
-        name: 'Dekanta',
-        scope: 'Website, UI designer',
-        describe: "This is a website project I participated in as a UI designer, where I was responsible for redesigning the website for a Japanese client in the Japanese liquor industry.",
-        thumbnail: ProjectImg3,
-        link: 'abc'
-    },
-    {
-        name: 'CashX',
-        scope: 'Website, UI designer',
-        describe: "This project involved redesigning an investment website for a U.S. client, where I served as the UI designer. I developed the UI following the Art Director's guidance and collaborated with the team to execute the design.",
-        thumbnail: ProjectImg4,
-        link: 'abc'
-    }
-]
+const {title, list} = Astro.props;
+
+const Project = list.map((item) => {
+    return allProjects.find((el) => item.project.id === el.id);
+});
 ---
 
 <HomeProjectComponent
-    Project={AllProjects}
+    Title={title[0]}
+    Project={Project}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 />

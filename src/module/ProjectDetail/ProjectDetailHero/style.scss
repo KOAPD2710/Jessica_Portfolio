@@ -1,0 +1,71 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+
+.proj-dtl {
+    &-hero {
+
+        padding-top: 18.3rem;
+
+        &-title {
+            &-wrapper {
+                grid-column: 1/-1;
+                display: flex;
+                column-gap: 1.2rem;
+                align-items: end;
+                margin-bottom: 5.2rem;
+            }
+        }
+
+        &-year {
+            margin-bottom: .8rem;
+            opacity: .9;
+        }
+
+        &-desc {
+            grid-column: 1/7;
+            line-height: 1.3;
+            opacity: .9;
+
+            margin-bottom: 4rem;
+        }
+        &-cta {
+            grid-column: 1/7;
+        }
+        &-info {
+            grid-column: 8/-1;
+            grid-row: 2/4;
+            display: flex;
+            flex-direction: column;
+
+            &-item {
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                padding-block: 2.4rem;
+
+                &-name {
+                    opacity: 0.65;
+                }
+
+                &-desc {
+
+                }
+
+                .line {
+                    position: absolute;
+                    left: 0;
+                    opacity: .2;
+
+                    &-bot {
+                        bottom: 0;
+                    }
+
+                    &-top {
+                        top: 0;
+                    }
+                }
+            }
+        }
+    }
+}

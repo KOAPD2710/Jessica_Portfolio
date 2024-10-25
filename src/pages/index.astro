@@ -4,14 +4,18 @@ import HomeHero from '@module/Home/HomeHero/HomeHero.astro';
 import HomeJourney from '@module/Home/HomeJourney/HomeJourney.astro';
 import HomeProject from '@module/Home/HomeProject/HomeProject.astro';
 import HomeAbout from '@module/Home/HomeAbout/HomeAbout.astro';
+import { getPage } from '@/js/core/prismic'
+const { data } = await getPage("home_page");
 
-
-
+// console.log(data)
 ---
 
 <Layout title="Home">
     <HomeHero/>
     <HomeJourney/>
-    <HomeProject/>
+    <HomeProject 
+        title={data.project_title}
+        list={data.project_list}
+    />
     <HomeAbout/>
 </Layout>

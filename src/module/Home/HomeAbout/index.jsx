@@ -1,5 +1,6 @@
-import { Fragment, useEffect } from 'react';
 import './style.scss';
+import { Fragment, useEffect } from 'react';
+import ArrowUpRight from '@/components/arrowUpRight';
 
 const HomeAbout = ({ ...props }) => {
 
@@ -52,15 +53,7 @@ const HomeAbout = ({ ...props }) => {
                             {props.Avatar}
                         </div>
                         <a href="." target='__blank' className='home-about-resume txt-med'>
-                            <div className="txt">MY RESUME</div>
-                            <div className='ic ic-24'>
-                                <div className="ic-inner">
-                                    {props.ArrUpRight}
-                                </div>
-                                <div className="ic-inner">
-                                    {props.ArrUpRight}
-                                </div>
-                            </div>
+                            <ArrowUpRight text={'My Resume'}/>
                         </a>
                     </div>
                 </div>

@@ -38,7 +38,7 @@ const Footer = ({ Email, Social, ...props }) => {
                     <div className="footer-ft-recap txt txt-18 txt-up">
                         <span>Designed & developed with love from VIETNAM</span> 🥰
                     </div>
-                    <div className="line line-top"></div>
+                    <div className="line line-top"/>
                 </div>
             </div>
         </footer>

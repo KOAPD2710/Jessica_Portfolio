@@ -1,0 +1,47 @@
+@use '@styles/mixins' as *;
+@use '@styles/colors' as *;
+
+.arrowUpRight {
+    display: flex;
+    align-items: center;
+    column-gap: .4rem;
+    letter-spacing: -0.02em;
+    width: fit-content;
+    margin: -1rem;
+    padding: 1rem;
+    cursor: pointer;
+
+    &-ic {
+        display: grid;
+        contain: paint;
+
+        &-inner {
+            grid-column: 1/2;
+            grid-row: 1/2;
+            transition: transform .4s ease;
+            transition-duration: 0s;
+
+
+            &:nth-child(2) {
+                transform: translate(-100%, 100%);
+            }
+        }
+    }
+
+    @include hover {
+
+        .arrowUpRight-ic {
+
+            &-inner {
+                transition-duration: .4s;
+
+                &:nth-child(1) {
+                    transform: translate(100%, -100%);
+                }
+                &:nth-child(2) {
+                    transform: translate(0%, 0%);
+                }
+            }
+        }
+    }
+}

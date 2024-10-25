@@ -1,28 +1,38 @@
 ---
 import Layout from '@/layouts/Layout.astro';
+import ProjectDetailHero from '@module/ProjectDetail/ProjectDetailHero/ProjectDetailHero.astro';
+import ProjectDetailBody from '@module/ProjectDetail/ProjectDetailBody/ProjectDetailBody.astro';
+import ProjectDetailNextProj from '@module/ProjectDetail/ProjectDetailNextProj/ProjectDetailNextProj.astro';
 
-const data = [
-  {params: {project: 'clifford'}, asdads: 'asdadasd'},
-  {params: {project: 'rover'}, asdads: 'asdadasd'},
-  {params: {project: 'spot'}, asdads: 'asdadasd'},
-]
-export function getStaticPaths() {
-  return data.map((item) => {
-        return {
-            params: { project: item },
-            props: { item },
-        };
-    });
+import { getAllByType } from '@/js/core/prismic';
+
+export const prerender = true;
+export async function getStaticPaths() {
+  const allProjects= await getAllByType("project");
+  return allProjects.map((item) => {
+    return {
+      params: { project: item.uid },
+      props: {
+        item: item,
+        dataPage: item.data
+      }
+    } 
+  });
 }
 
 const { project } = Astro.params;
-const { item } = Astro.props;
+const { item, dataPage } = Astro.props;
 
 
-console.log(Astro.params, Astro.props);
 
+import { getPage } from '@/js/core/prismic'
 
+const HomePage = await getPage("home_page");
+
+const ListUID = HomePage.data.project_list.map(el => el.project.uid)
 ---
-<Layout>
-  <h1>{project}</h1>
+<Layout title={`Project ${dataPage.name[0].text}`}>
+  <ProjectDetailHero data={dataPage}/>
+  <ProjectDetailBody data={dataPage}/>
+  <ProjectDetailNextProj currentProj={project} listProj={ListUID}/>
 </Layout>
