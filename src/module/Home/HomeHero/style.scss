@@ -7,6 +7,11 @@
         @include size(100%, 100svh);
         padding-block: 6.7rem 5rem;
 
+        @include sm {
+            height: unset;
+            padding-top: 11.2rem;
+        }
+
         .container {
             height: 100%;
 
@@ -22,16 +27,31 @@
             grid-row: 1/2;
 
             margin-top: 12rem;
+
+            @include sm {
+                margin-top: unset;
+                grid-column: 1/-1;
+                grid-row: 3/4
+            }
         }
 
         &-img {
             @include size(43.5rem, 24.1rem);
+
+            @include sm {
+                @include size(100%, unset);
+                aspect-ratio: 1.8062827225;
+            }
 
             &-wrapper {
                 grid-column: 13/-1;
                 grid-row: 2/3;
 
                 margin-block: auto;
+
+                @include sm {
+                    grid-column: 1/-1;
+                }
             }
         }
 
@@ -39,6 +59,11 @@
         &-title {
             grid-column: 1/13;
             grid-row: 3/4;
+
+            @include sm {
+                grid-column: 1/-1;
+                grid-row: 1/2;
+            }
         }
 
         &-label {
@@ -56,6 +81,10 @@
             text-align: end;
 
             opacity: .65;
+            
+            @include sm {
+                display: none;
+            }
         }
     }
 }

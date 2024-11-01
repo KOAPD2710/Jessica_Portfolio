@@ -34,11 +34,11 @@ html {
     --grid-gap: 2rem;
     --max-width: unset;
 
-    @include md {
-        --grid-column: 12;
-        --grid-gap: 1.6rem;
-        --container-padding: 4rem;
-    }
+    // @include md {
+    //     --grid-column: 12;
+    //     --grid-gap: 1.6rem;
+    //     --container-padding: 4rem;
+    // }
     @include sm {
         --grid-column: 4;
         --container-padding: 1.6rem;
