@@ -6,12 +6,23 @@
         padding-block: 15.5rem 0rem;
         contain: paint;
 
+        @include sm {
+            padding-block: 6rem;
+        }
+
         &-heading {
             grid-column: 1/-1;
 
             display: flex;
             align-items: end;
             column-gap: 3rem;
+
+            @include sm {
+                flex-direction: column;
+                align-items: unset;
+                column-gap: unset;
+                row-gap: 1rem;
+            }
         }
 
         &-count {
@@ -21,6 +32,11 @@
                 letter-spacing: -0.02em;
 
                 opacity: .9;
+
+                @include sm {
+                    display: flex;
+                    column-gap: 1rem;
+                }
             }
         }
 
@@ -32,6 +48,11 @@
             row-gap: 6rem;
 
             margin-top: 12rem;
+
+            @include sm {
+                margin-top: 4rem;
+                grid-template-columns: 1fr;
+            }
         }
 
         &-line {
@@ -50,8 +71,16 @@
         &-thumb {
             margin-bottom: 2.4rem;
 
+            @include sm {
+                margin-bottom: 1.6rem;
+            }
+
             &-inner {
                 height: 53.9rem;
+
+                @include sm {
+                    height: 20.7rem;
+                }
             }
         }
 
@@ -61,19 +90,45 @@
             align-items: end;
 
             margin-bottom: 1.2rem;
+
+            @include sm {
+                column-gap: unset;
+                align-items: unset;
+                flex-direction: column;
+            }
+        }
+
+        &-name {
+            @include sm {
+                @include text(22);
+
+                margin-bottom: .8rem;
+            }
         }
         &-scope {
             opacity: .65;
+
+            @include sm {
+                @include text(16);
+            }
         }
 
         &-no {
             margin-left: auto;
             opacity: .65;
+
+            @include sm {
+                display: none;
+            }
         }
 
         &-desc {
             line-height: 1.4em;
             opacity: .9;
+
+            @include sm {
+                @include text(16);
+            }
         }
     }
 }

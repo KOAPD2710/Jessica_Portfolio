@@ -5,10 +5,18 @@
     &-about {
         padding-block: 15rem 10rem;
 
+        @include sm {
+            padding-block: 6rem;
+        }
+
         &-title {
             grid-column: 1/-1;
             grid-row: 1/2;
             margin-bottom: 12rem;
+
+            @include sm {
+                margin-bottom: 4rem;
+            }
         }
 
         &-preamble, &-experience {
@@ -18,17 +26,33 @@
             grid-template-columns: repeat(10, 1fr);
             column-gap: var(--grid-gap);
 
+            @include sm {
+                grid-column: 1/-1;
+                grid-template-columns: 1fr;
+            }
+
             &-label {
                 grid-column: 1/4;
                 height: fit-content;
 
                 opacity: .9;
+
+                @include sm {
+                    grid-column: 1/-1;
+
+                    margin-bottom: 2.4rem;
+                }
             }
         }
 
         &-preamble {
             grid-row: 2/3;
             margin-bottom: 8rem;
+
+            @include sm {
+                grid-row: 3/4;
+                margin-bottom: 6rem;
+            }
 
             &-content {
                 grid-column: 5/-1;
@@ -37,9 +61,19 @@
 
                 opacity: .9;
 
+                @include sm {
+                    grid-column: 1/-1;
+                }
+
 
                 p {
                     margin-bottom: 4rem;   
+
+                    @include sm {
+                        font-size: 1.8rem;
+                        margin-bottom: 2.4rem;
+                        letter-spacing: -0.02em;
+                    }
                 }
 
                 strong {
@@ -47,6 +81,12 @@
                     line-height: 1.3em;
                     font-weight: normal;
                     letter-spacing: -0.02em;
+
+                    @include sm {
+                        font-size: 2.2rem;
+                        line-height: 1.4em;
+                        letter-spacing: unset;
+                    }
                 }
 
                 *:last-child {
@@ -58,12 +98,24 @@
         &-experience {
             grid-row: 3/4;
 
+            @include sm {
+                grid-row: 4/5;
+            }
+
             &-label {
                 margin-top: 4rem;
+
+                @include sm {
+                    margin-top: unset;
+                }
             }
 
             &-list {
                 grid-column: 5/-1;
+
+                @include sm {
+                    grid-column: 1/-1;
+                }
             }
 
             &-item {
@@ -73,6 +125,10 @@
                 row-gap: .8rem;
 
                 padding-block: 2.4rem;
+
+                @include sm {
+                    @include text(18);
+                }
 
                 &-name_role, &-location_milestone {
                     display: flex;
@@ -109,6 +165,13 @@
             grid-column: 13/-1;
             grid-row: 2/4;
 
+            @include sm {
+                grid-column: 1/-1;
+                grid-row: 2/3;
+
+                margin-bottom: 4rem;
+            }
+
             &-inner {
                 @include size(100%, 29.3rem);
             }
@@ -120,6 +183,10 @@
                 display: flex;
                 flex-direction: column;
                 align-items: end;
+
+                @include sm {
+                    align-items: unset;
+                }
             }
         }
 
@@ -129,40 +196,10 @@
             column-gap: .4rem;
 
             margin-top: 2.4rem;
-
             letter-spacing: -0.02em;
-            color: $cl-orange;
 
-            .ic {
-                display: grid;
-                contain: paint;
-
-                &-inner {
-                    grid-column: 1/2;
-                    grid-row: 1/2;
-                    transition: transform .4s ease;
-                    transition-duration: 0s;
-
-
-                    &:nth-child(2) {
-                        transform: translate(-100%, 100%);
-                    }
-                }
-            }
-
-            @include hover {
-                .ic {
-                    &-inner {
-                        transition-duration: .4s;
-
-                        &:nth-child(1) {
-                            transform: translate(100%, -100%);
-                        }
-                        &:nth-child(2) {
-                            transform: translate(0%, 0%);
-                        }
-                    }
-                }
+            @include sm {
+                @include text(16);
             }
         }
     }

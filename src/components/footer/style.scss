@@ -13,24 +13,54 @@
     background-color: rgb(var(--cl-black));
     color: $cl-white;
 
+    @include sm {
+        position: unset;
+        left: unset;
+        bottom: unset;
+    }
+
     &-preamble {
         grid-column: 1/4;
+
+        @include sm {
+            grid-column: 1/-1;
+            margin-bottom: 5rem;
+        }
     }
 
     &-label {
         opacity: .7;
         margin-bottom: 1.8rem;
+
+        @include sm {
+            @include text(18);
+        }
     }
 
     &-desc {
         opacity: .5;
+
+        // letter-spacing: -0.015em;
+
+        @include sm {
+            margin-right: -.2rem;
+        }
     }
 
     &-mail {
         width: 100%;
 
+        @include sm {
+
+            @include text(32);
+        }
+
         &-wrapper {
             grid-column: 7/-1;
+
+            @include sm {
+                grid-column: 1/-1;
+            }
         }
 
         &-txt {
@@ -43,6 +73,11 @@
 
             &-sm {
                 margin-left: 1rem;
+
+                @include sm {
+                    display: inline-block;
+                    margin-left: unset;
+                }
 
                 span {
                     opacity: .5;
@@ -61,6 +96,11 @@
         grid-column: 7/-1;
         display: flex;
         margin-top: 6rem;
+
+        @include sm {
+            grid-column: 1/-1;
+            display: none;
+        }
 
         &-label {
             margin-right: 8.3rem;
@@ -87,12 +127,26 @@
         padding-block: 2rem;
         margin-top: 13rem;
 
+        @include sm {
+            flex-direction: column;
+            @include text(16);
+        }
+
 
         &-copy {
             opacity: .3;
+
+            @include sm {
+                margin-bottom: 1rem;
+            }
         }
 
         &-recap {
+            @include sm {
+                max-width: 27rem;
+                line-height: 1.4;
+            }
+
             span {
                 opacity: .3;
             }
@@ -106,6 +160,11 @@
 
             &-top {
                 top: 0;
+
+                @include sm {
+                    position: relative;
+                    margin-bottom: 1.6rem;
+                }
             }
         }
     }

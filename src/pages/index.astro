@@ -12,10 +12,10 @@ const { data } = await getPage("home_page");
 
 <Layout title="Home">
     <HomeHero/>
-    <!-- <HomeJourney/> -->
-    <!-- <HomeProject 
+    <HomeJourney/>
+    <HomeProject 
         title={data.project_title}
         list={data.project_list}
-    /> -->
-    <!-- <HomeAbout/> -->
+    />
+    <HomeAbout/>
 </Layout>

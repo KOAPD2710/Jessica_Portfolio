@@ -10,6 +10,8 @@
         @include sm {
             height: unset;
             padding-top: 11.2rem;
+
+            height: unset;
         }
 
         .container {
@@ -51,6 +53,8 @@
 
                 @include sm {
                     grid-column: 1/-1;
+
+                    margin-bottom: 3.8rem;
                 }
             }
         }
@@ -63,6 +67,10 @@
             @include sm {
                 grid-column: 1/-1;
                 grid-row: 1/2;
+
+                padding-right: 1.8rem;
+
+                margin-bottom: 3.2rem;
             }
         }
 

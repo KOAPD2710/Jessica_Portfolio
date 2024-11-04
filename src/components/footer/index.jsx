@@ -18,8 +18,8 @@ const Footer = ({ Email, Social, ...props }) => {
                 <div className="footer-mail-wrapper">
                     <a href={Email} className="footer-mail h2">
                         <span className='footer-mail-txt'>{Email}</span>
-                        <span className='footer-mail-txt-sm txt txt-18'>
-                            <span>(CLICK TO COPY </span>🌞<span>)</span>
+                        <span className='footer-mail-txt-sm txt txt-18 txt-up'>
+                            <span>(TAP TO COPY </span>🌞<span>)</span>
                         </span>
                     </a>
                 </div>
@@ -34,11 +34,11 @@ const Footer = ({ Email, Social, ...props }) => {
                     </div>
                 </div>
                 <div className="footer-ft">
+                    <div className="line line-top"/>
                     <div className="footer-ft-copy txt txt-18 txt-up">©2024 phgg ng</div>
                     <div className="footer-ft-recap txt txt-18 txt-up">
                         <span>Designed & developed with love from VIETNAM</span> 🥰
                     </div>
-                    <div className="line line-top"/>
                 </div>
             </div>
         </footer>
