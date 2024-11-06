@@ -24,6 +24,7 @@ const Footer = ({ Email, Social, ...props }) => {
                     </a>
                 </div>
                 <div className="footer-social txt-18">
+                    <div className="line line-top" />
                     <div className="footer-social-label">(SOCIALS)</div>
                     <div className="footer-social-list">
                         {Social.map((item, idx) => (
@@ -34,7 +35,7 @@ const Footer = ({ Email, Social, ...props }) => {
                     </div>
                 </div>
                 <div className="footer-ft">
-                    <div className="line line-top"/>
+                    <div className="line line-top" />
                     <div className="footer-ft-copy txt txt-18 txt-up">©2024 phgg ng</div>
                     <div className="footer-ft-recap txt txt-18 txt-up">
                         <span>Designed & developed with love from VIETNAM</span> 🥰

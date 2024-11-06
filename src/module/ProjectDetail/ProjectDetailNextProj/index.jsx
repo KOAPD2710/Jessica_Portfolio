@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import './style.scss'
 
-const ProjectDetailNextProj = ({list, ...props}) => {
+const ProjectDetailNextProj = ({ list, ...props }) => {
     useEffect(() => {
-        console.log(list)
-    },[])
+        // console.log(list)
+    }, [])
     return (
         <section className='proj-dtl-next' data-theme="dark">
             <div className="container grid">
@@ -19,7 +19,7 @@ const ProjectDetailNextProj = ({list, ...props}) => {
                     ))}
                 </div>
             </div>
-            <div className="line"/>
+            <div className="line" />
         </section>
     )
 }

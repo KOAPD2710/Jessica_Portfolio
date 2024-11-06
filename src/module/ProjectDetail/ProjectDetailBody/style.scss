@@ -3,9 +3,35 @@
 
 
 .proj-dtl-body {
-
     padding-block: 10rem 12rem;
-    &-content {
-        grid-column: 8/-1;
+
+    &-thumb {
+        @include size(100%, 101.25rem);
+
+        &-wrapper {
+            grid-column: 1/-1;
+            margin-bottom: 10rem;
+        }
+    }
+
+    &-label {
+        grid-column: 1/4;
+        margin-bottom: 2rem;
+    }
+    &-sub {
+        grid-column: 1/4;
+        opacity: .65;
+    }
+    &-desc {
+        grid-column: 9/-1;
+        line-height: 1.4;
+
+        p {
+            margin-bottom: 4rem;
+        }
+
+        *:last-child {
+            margin-bottom: unset;
+        }
     }
 }

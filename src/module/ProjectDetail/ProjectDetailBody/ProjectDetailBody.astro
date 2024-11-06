@@ -1,7 +1,5 @@
 ---
-import ProjectDetailBodyComponent from './'
-import * as prismic from '@prismicio/client'
-const contentText = prismic.asHTML(Astro.props.data.content);
+import ProjectDetailBodyComponent from './';
 ---
 
 
@@ -9,5 +7,4 @@ const contentText = prismic.asHTML(Astro.props.data.content);
     {...Astro.props}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 >
-    <Fragment set:html={contentText} slot='bodyContent'/>
 </ProjectDetailBodyComponent>

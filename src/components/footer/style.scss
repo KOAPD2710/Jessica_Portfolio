@@ -98,19 +98,47 @@
         margin-top: 6rem;
 
         @include sm {
+            position: relative;
             grid-column: 1/-1;
-            display: none;
+            display: flex;
+            column-gap: var(--grid-gap);
+
+            margin-block: 4rem;
+            padding-top: 4rem;
         }
 
         &-label {
             margin-right: 8.3rem;
             opacity: .5;
+
+            @include sm {
+                width: 100%;
+                margin-right: unset;
+            }
         }
 
         &-list {
             display: flex;
             column-gap: 4rem;
             color: $cl-orange;
+
+            @include sm {
+                width: 100%;
+                flex-direction: column;
+
+                row-gap: 1rem;
+            }
+        }
+
+        .line {
+            display: none;
+            position: absolute;
+            opacity: .2;
+
+            @include sm {
+                display: block;
+                top: 0;
+            }
         }
     }
 
@@ -129,7 +157,8 @@
 
         @include sm {
             flex-direction: column;
-            @include text(16);
+            margin-top: unset;
+            padding-top: unset;
         }
 
 
@@ -138,6 +167,8 @@
 
             @include sm {
                 margin-bottom: 1rem;
+
+                @include text(16);
             }
         }
 
@@ -145,6 +176,8 @@
             @include sm {
                 max-width: 27rem;
                 line-height: 1.4;
+
+                @include text(16);
             }
 
             span {
