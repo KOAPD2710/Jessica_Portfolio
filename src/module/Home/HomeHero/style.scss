@@ -38,16 +38,16 @@
         }
 
         &-img {
-            @include size(43.5rem, 24.1rem);
+            @include size(100%, 120%);
 
-            @include sm {
-                @include size(100%, unset);
-                aspect-ratio: 1.8062827225;
-            }
 
             &-wrapper {
                 grid-column: 13/-1;
                 grid-row: 2/3;
+
+                aspect-ratio: 1.8049792531;
+                contain: paint;
+                overflow: hidden;
 
                 margin-block: auto;
 
@@ -55,6 +55,7 @@
                     grid-column: 1/-1;
 
                     margin-bottom: 3.8rem;
+                    aspect-ratio: 1.8062827225;
                 }
             }
         }

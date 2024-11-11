@@ -23,9 +23,19 @@ html {
     opacity: 1;
     transition: opacity 300ms ease;
 
-    // &.on-load {
-    //     opacity: 0;
-    // }
+    &.on-load {
+        opacity: 0;
+    }
+}
+
+body {
+    position: relative;
+    opacity: 1;
+    transition: opacity 100ms ease;
+
+    &.on-load {
+        opacity: 0;
+    }
 }
 
 html {
@@ -138,6 +148,20 @@ button {
 .line {
     background-color: currentColor;
     @include size(100%, 1px);
+}
+
+.txt:has(.split-line, .split-word, .split-char) {
+    padding-bottom: .1em;
+}
+
+.split {
+    &-line, &-word {
+        contain: paint;
+
+        padding: .1em;
+        margin: -.1em;
+        margin-bottom: -0.2em;
+    }
 }
 
 .hover {

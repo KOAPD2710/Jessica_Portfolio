@@ -68,18 +68,58 @@
 
 .project {
     &-item {
+
+        @include hover {
+            .project-item-thumb img {
+                transform: scale(1.1);
+                filter: contrast(1.2) brightness(.5);
+            }
+
+            .project-item-view {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        &-view {
+            position: absolute;
+            z-index: 2;
+            background-color: $cl-white;
+            padding: 1.2rem;
+
+            pointer-events: none;
+            user-select: none;
+
+            opacity: 0;
+            transform: scale(.9);
+
+            transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+        }
+
         &-thumb {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            height: 53.9rem;
             margin-bottom: 2.4rem;
+            overflow: hidden;
 
             @include sm {
+                height: 20.7rem;
+
                 margin-bottom: 1.6rem;
             }
 
             &-inner {
-                height: 53.9rem;
+                align-self: start;
+                @include size(100%, 110%);
 
-                @include sm {
-                    height: 20.7rem;
+                img {
+                    transition: all .3s cubic-bezier(0.39, 0.575, 0.565, 1);
+                    filter: unset;
+                    will-change: transform, filter;
                 }
             }
         }

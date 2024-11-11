@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import './style.scss';
+import { useGSAP } from '@gsap/react';
+import ArrowUpRight from '@/components/arrowUpRight';
 
 const HomeProject = ({ Project, Title, ...props }) => {
     return (
@@ -16,7 +18,7 @@ const HomeProject = ({ Project, Title, ...props }) => {
                 </div>
                 <div className="home-project-list">
                     {Project.map((proj, idx) => (
-                        <ProjectItem key={proj.uid} No={idx} {...proj.data} UID={proj.uid}/>
+                        <ProjectItem key={proj.uid} No={idx} {...proj.data} UID={proj.uid} />
                     ))}
                 </div>
                 <div className="line home-project-line" />
@@ -28,9 +30,48 @@ const HomeProject = ({ Project, Title, ...props }) => {
 
 const ProjectItem = ({ ...props }) => {
     const { UID, No, name, role, category, describe, thumbnail, link } = props;
+
+    const target = useRef()
+
+    useGSAP((context, contextSafe) => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: target.current.querySelector('.project-item-thumb'),
+                scrub: true,
+            }
+        })
+        tl.to(target.current.querySelector('.project-item-thumb-inner'), {
+            yPercent: -9,
+        })
+
+        // const onHover = contextSafe(() => {
+        //     gsap.to(target.current.querySelector('.project-item-thumb-inner img'), {
+        //         scale: 1.1,
+        //         duration: .4
+        //     });
+        // });
+
+        // const onLeave = contextSafe(() => {
+        //     gsap.to(target.current.querySelector('.project-item-thumb-inner img'), {
+        //         scale: 1.1
+        //     });
+        // });
+
+        // target.current.addEventListener('pointerenter', onHover);
+
+        // return () => {
+        //     target.current.removeEventListener('pointerenter', onHover);
+
+        // }
+    }, {
+        scope: target.current
+    })
     return (
-        <a href={`./projects/${UID}`} className="project-item">
+        <a href={`./projects/${UID}`} className="project-item" ref={target}>
             <div className="project-item-thumb">
+                <div className="project-item-view">
+                    <ArrowUpRight text="View Project" />
+                </div>
                 <div className="project-item-thumb-inner">
                     <img src={thumbnail.url} alt={thumbnail.alt} width={thumbnail.dimensions.width} height={thumbnail.dimensions.height} loading='lazy' className='img img-fill' />
                 </div>

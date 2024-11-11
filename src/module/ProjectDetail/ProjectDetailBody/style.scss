@@ -35,8 +35,35 @@
             margin-bottom: unset;
         }
     }
+    &-subdesc {
+        position: relative;
+        padding-block: 3.2rem;
 
-    &-label-wrapper, &-desc {
+        &-wrapper {
+            grid-column: 9/-1;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: var(--grid-gap);
+            row-gap: 3.2rem;
+        }
+
+        &-title {
+            margin-bottom: 1.6rem;
+        }
+
+        &-desc {
+            opacity: .9;
+        }
+
+        .line {
+            position: absolute;
+            top: 0;
+            opacity: .3;
+        }
+    }
+
+    &-label-wrapper, &-desc, &-subdesc-wrapper {
         margin-block: 10rem 6rem;
     }
     &-bigimg {
