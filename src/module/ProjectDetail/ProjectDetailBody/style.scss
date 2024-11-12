@@ -3,9 +3,110 @@
 
 
 .proj-dtl-body {
-
     padding-block: 10rem 12rem;
-    &-content {
-        grid-column: 8/-1;
+
+    &-thumb {
+        @include size(100%, 101.25rem);
+
+        &-wrapper {
+            grid-column: 1/-1;
+        }
+    }
+
+    &-label {
+        margin-bottom: 2rem;
+        
+        &-wrapper {
+            grid-column: 1/4;
+        }
+    }
+    &-sub {
+        opacity: .65;
+    }
+    &-desc {
+        grid-column: 9/-1;
+        line-height: 1.4;
+
+        p {
+            margin-bottom: 4rem;
+        }
+
+        strong {
+            font-weight: 500;
+        }
+
+        *:last-child {
+            margin-bottom: unset;
+        }
+    }
+    &-subdesc {
+        position: relative;
+        padding-block: 3.2rem;
+
+        &-wrapper {
+            grid-column: 9/-1;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: var(--grid-gap);
+            row-gap: 3.2rem;
+        }
+
+        &-title {
+            margin-bottom: 1.6rem;
+        }
+
+        &-desc {
+            opacity: .9;
+        }
+
+        .line {
+            position: absolute;
+            top: 0;
+            opacity: .3;
+        }
+    }
+
+    &-label-wrapper, &-desc, &-subdesc-wrapper {
+        margin-block: 10rem 6rem;
+    }
+    &-bigimg {
+        width: 100%;
+
+        &-wrapper {
+            grid-column: 1/-1;
+
+            display: grid;
+            row-gap: 2rem;
+
+            margin-bottom: 2rem;
+        }
+    }
+    &-smallimg {
+        width: 100%;
+
+        &-wrapper {
+            grid-column: 1/-1;
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: var(--grid-gap);
+            row-gap: var(--grid-gap);
+
+            margin-bottom: 2rem;
+
+        }
+    }
+
+    &-progress {
+
+    }
+
+    &-final_design {
+
+    }
+
+    &-takeaway {
+
     }
 }

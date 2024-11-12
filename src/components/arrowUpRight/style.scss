@@ -10,6 +10,7 @@
     margin: -1rem;
     padding: 1rem;
     cursor: pointer;
+    
 
     &-ic {
         display: grid;
@@ -20,6 +21,10 @@
             grid-row: 1/2;
             transition: transform .4s ease;
             transition-duration: 0s;
+
+            @include sm {
+                @include size(1.8rem);
+            }
 
 
             &:nth-child(2) {

@@ -11,10 +11,77 @@
     mix-blend-mode: difference;
     filter: invert(1);
 
+    transition: color .3s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+    @include sm {
+        background-color: $cl-white;
+        mix-blend-mode: unset;
+        filter: unset;
+
+        // filter: drop-shadow(0px 1rem 0px rgba($cl-white, .4));
+    }
+
+    &.menu-opening {
+        // mix-blend-mode: unset;
+        // filter: unset;
+        color: $cl-white;
+
+        .header-menu {
+            clip-path: inset(0% 0% 0% 0%);
+        }
+
+        .header-toggle {
+            opacity: .5;
+
+            &-inner {
+                span {
+                    &:nth-child(1) {
+                        transform: rotate(45deg) translateY(0rem);
+                    }
+
+                    &:nth-child(2) {
+                        transform: rotate(-45deg) translateY(0rem);
+                    }
+                }
+            }
+        }
+    }
+
     &-logo {
         grid-column: 1/3;
         opacity: .9;
         letter-spacing: -0.02em;
+
+        @include sm {
+            position: relative;
+            z-index: 2;
+            contain: paint;
+        }
+        
+        .txt-med {
+            @include sm {
+                font-weight: 400;
+            }
+        }
+
+        &-wrapper {
+            position: relative;
+        }
+
+        &-menu {
+            display: none;
+
+            @include sm {
+                display: block;
+                position: absolute;
+
+                @for $i from 1 through 5 {
+                    &:nth-child(#{$i}) {
+                        top: calc(($i - 1) * 100%);
+                    }
+                }
+            }
+        }
     }
 
     &-label {
@@ -23,6 +90,9 @@
         opacity: .8;
         letter-spacing: -0.02em;
 
+        @include sm {
+            display: none;
+        }
     }
 
     &-menu {
@@ -31,6 +101,100 @@
         opacity: .9;
         display: flex;
         justify-content: space-between;
+
+        @include sm {
+
+            position: absolute;
+            // top: 100%;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            padding-inline: var(--container-padding);
+            padding-block: calc(6.5rem + 2.4rem) 2.4rem;
+            
+            grid-column: 1/-1;
+            flex-direction: column;
+            z-index: 1;
+            row-gap: 1.6rem;
+            background-color: $cl-black;
+            opacity: 1;
+
+            clip-path: inset(0% 0% 100% 0%);
+            transition: clip-path .4s ease-in-out;
+        }
+
+        &-item {
+
+            @include sm {
+                display: flex;
+                column-gap: 1.2rem;
+                align-items: center;
+                transition: color .3s ease-out;
+
+                &.active {
+                    color: $cl-orange;
+                }
+            }
+
+            &-span {
+                @include sm {
+                    display: inline-block;
+                    width: 2rem;
+                    height: 2px;
+                    background-color: currentColor;
+                }
+            }
+        }
+    }
+
+    &-toggle {
+        display: none;
+        opacity: 1;
+        transition: opacity .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+        @include sm {
+            position: relative;
+            display: unset;
+            grid-column: 4/-1;
+            z-index: 5;
+
+            justify-self: end;
+
+            padding: 1rem;
+            margin: -1rem;
+
+            // border: solid 1px red;
+        }
+
+        &-inner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include size(2.4rem);
+
+            // border: solid 1px blue;
+
+
+            span {
+                position: absolute;
+                display: block;
+                width: 100%;
+                height: 2px;
+                border-radius: 100vmax;
+                background-color: currentColor;
+                transition: all .3s ease-out;
+
+                &:nth-child(1) {
+                    transform: rotate(0deg) translateY(-.4rem);
+                }
+
+                &:nth-child(2) {
+                    transform: rotate(0deg) translateY(.4rem);
+                }
+            }
+        }
     }
 
     .line {
@@ -39,5 +203,9 @@
         left: 0;
         
         opacity: .2;
+
+        @include sm {
+            z-index: 5;
+        }
     }
 }

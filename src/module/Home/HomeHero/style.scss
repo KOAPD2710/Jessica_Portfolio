@@ -7,6 +7,13 @@
         @include size(100%, 100svh);
         padding-block: 6.7rem 5rem;
 
+        @include sm {
+            height: unset;
+            padding-top: 11.2rem;
+
+            height: unset;
+        }
+
         .container {
             height: 100%;
 
@@ -22,16 +29,34 @@
             grid-row: 1/2;
 
             margin-top: 12rem;
+
+            @include sm {
+                margin-top: unset;
+                grid-column: 1/-1;
+                grid-row: 3/4
+            }
         }
 
         &-img {
-            @include size(43.5rem, 24.1rem);
+            @include size(100%, 120%);
+
 
             &-wrapper {
                 grid-column: 13/-1;
                 grid-row: 2/3;
 
+                aspect-ratio: 1.8049792531;
+                contain: paint;
+                overflow: hidden;
+
                 margin-block: auto;
+
+                @include sm {
+                    grid-column: 1/-1;
+
+                    margin-bottom: 3.8rem;
+                    aspect-ratio: 1.8062827225;
+                }
             }
         }
 
@@ -39,6 +64,15 @@
         &-title {
             grid-column: 1/13;
             grid-row: 3/4;
+
+            @include sm {
+                grid-column: 1/-1;
+                grid-row: 1/2;
+
+                // padding-right: 1.8rem;
+
+                margin-bottom: 3.2rem;
+            }
         }
 
         &-label {
@@ -56,6 +90,10 @@
             text-align: end;
 
             opacity: .65;
+            
+            @include sm {
+                display: none;
+            }
         }
     }
 }

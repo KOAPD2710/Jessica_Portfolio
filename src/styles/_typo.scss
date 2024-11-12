@@ -5,7 +5,7 @@ html {
         font-size: 1.1990407674vw;
     }
     @include sm {
-        font-size: 2.5641025641vw;
+        font-size: 2.6666666667vw;
     }
 }
 
@@ -42,9 +42,14 @@ body {
     --lh-h5: 1em;
     --ls-h5: -0.02em;
 
-
     --fs-h6: 2rem;
     --lh-h6: 1.2em;
+
+    @include sm {
+        --fs-h0: 6rem;
+
+        --fs-h1: 3.2rem;
+    }
 }
 
 @for $i from 0 through 6 {
@@ -78,6 +83,10 @@ $txtSizes: 16, 18, 22, 24, 32, 44;
 
     --fs-44: 4.4rem;
     --lh-44: 1.2em;
+
+    @include sm {
+        --fs-24: 1.8rem;
+    }
 }
 
 .txt {

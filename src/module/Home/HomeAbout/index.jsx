@@ -52,7 +52,7 @@ const HomeAbout = ({ ...props }) => {
                         <div className="home-about-avatar-inner">
                             {props.Avatar}
                         </div>
-                        <a href="." target='__blank' className='home-about-resume txt-med'>
+                        <a href="https://drive.google.com/file/d/1ZzemNT_fEY3yFJhRajRnobCan1Pz6_ey/view" target='__blank' className='home-about-resume txt-med'>
                             <ArrowUpRight text={'My Resume'}/>
                         </a>
                     </div>

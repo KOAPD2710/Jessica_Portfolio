@@ -88,14 +88,14 @@ const HomeJourney = ({ ...props }) => {
     return (
         <section className="home-journey" data-theme="dark" ref={container} id="homeJourney">
             <div className="container grid">
-                <div className="home-journey-line-wrapper"></div>
+                <div className="home-journey-line-wrapper"/>
                 <div className="home-journey-label txt-24 txt-up">(JOURNEY)</div>
                 <div className="home-journey-content txt-44">
                     <div className="home-journey-content-inner top txt-clipLine" ref={contentTopRef}>
-                        <span className="txt-spacer"></span>{content}
+                        <span className="txt-spacer"/>{content}
                     </div>
                     <div className="home-journey-content-inner bot" ref={contentBotRef}>
-                        <span className="txt-spacer"></span>{content}
+                        <span className="txt-spacer"/>{content}
                     </div>
                 </div>
             </div>
