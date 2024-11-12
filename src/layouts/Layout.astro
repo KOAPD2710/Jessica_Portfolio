@@ -34,8 +34,8 @@ const pathname = Astro.url.pathname
 			window.gsap = gsap;
 			window.ScrollTrigger = ScrollTrigger;
 
-			gsap.registerPlugin(ScrollTrigger);
-			gsap.defaults({
+			gsap?.registerPlugin(ScrollTrigger);
+			gsap?.defaults({
 				ease: "none",
 				duration: 1,
 			});

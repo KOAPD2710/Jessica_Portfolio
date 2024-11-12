@@ -3,7 +3,8 @@ import './style.scss'
 import { useEffect, useRef } from "react"
 import SplitType from 'split-type'
 import { title } from 'node_modules/@prismicio/client/dist/helpers/isFilled'
-import { typeSplit } from '@/js/utils'
+import { typeSplit } from '@/js/utils';
+import gsap from 'gsap'
 
 const HomeHero = ({ HeroImage, ...props }) => {
     const container = useRef()
@@ -12,8 +13,6 @@ const HomeHero = ({ HeroImage, ...props }) => {
     const label = useRef()
     const desc = useRef()
     const scrollDown = useRef()
-
-
 
     useGSAP(() => {
         const tlImg = gsap.timeline({
@@ -47,8 +46,6 @@ const HomeHero = ({ HeroImage, ...props }) => {
                 split.label.revert()
             }
         })
-
-
 
         tlOnEnter
             .fromTo(split.title.chars, {
@@ -108,7 +105,7 @@ const HomeHero = ({ HeroImage, ...props }) => {
                     </div>
                 </div>
                 <div className="home-hero-title h0 txt" ref={title}>
-                    Building from <span className='txt-orange'>the ground up</span>
+                    Building from <span className='txt-orange'>the</span> <span className='txt-orange'>ground</span> <span className='txt-orange'>up</span>
                 </div>
                 <div className="home-hero-scroll txt txt-16 txt-up txt" ref={scrollDown}>scroll down</div>
             </div>

@@ -16,7 +16,7 @@ const Footer = ({ Email, Social, ...props }) => {
                     <div className="footer-desc">I'm here to listen, collaborate, and craft design solutions that resonate.</div>
                 </div>
                 <div className="footer-mail-wrapper">
-                    <a href={Email} className="footer-mail h2">
+                    <a href={`mailto:${Email}`} className="footer-mail h2">
                         <span className='footer-mail-txt'>{Email}</span>
                         <span className='footer-mail-txt-sm txt txt-18 txt-up'>
                             <span>(TAP TO COPY </span>🌞<span>)</span>
