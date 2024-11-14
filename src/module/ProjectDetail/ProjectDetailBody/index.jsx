@@ -34,6 +34,9 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 {data.big_image_product_overview.map((item) => (
                                     <div className="proj-dtl-body-product_overview-bigimg proj-dtl-body-bigimg" key={item.image.id}>
                                         <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' />
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-bigimg-txt txt txt-16">{item.img.alt}</div>
+                                        )}
                                     </div>
                                 ))}
                             </div>
@@ -43,6 +46,9 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 {data.small_image_product_overview.map((item) => (
                                     <div className="proj-dtl-body-product_overview-smallimg proj-dtl-body-smallimg" key={item.image.id}>
                                         <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' />
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-smallimg-txt txt txt-16">{item.img.alt}</div>
+                                        )}
                                     </div>
                                 ))}
                             </div>
@@ -77,7 +83,7 @@ const ProjectDetailBody = ({ data, ...props }) => {
                         )}
                         {!isEmpty(data.subdesc_challenges) && (
                             <div className="proj-dtl-body-challenges-subdesc-wrapper proj-dtl-body-subdesc-wrapper">
-                               {data.subdesc_challenges?.map((item, idx) => (
+                                {data.subdesc_challenges?.map((item, idx) => (
                                     <div className="proj-dtl-body-challenges-subdesc-item proj-dtl-body-subdesc" key={idx}>
                                         <div className="line line-ver" />
                                         <div className="proj-dtl-body-challenges-subdesc-item-title proj-dtl-body-subdesc-title txt txt-32">{item.title[0]?.text}</div>
@@ -123,6 +129,9 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 {data.big_images_progress.map((item) => (
                                     <div className="proj-dtl-body-progress-bigimg proj-dtl-body-bigimg" key={item.image.id}>
                                         <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' />
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-bigimg-txt txt txt-16">{item.img.alt}</div>
+                                        )}
                                     </div>
                                 ))}
                             </div>
@@ -132,6 +141,9 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 {data.small_images_progress.map((item) => (
                                     <div className="proj-dtl-body-progress-smallimg proj-dtl-body-smallimg" key={item.image.id}>
                                         <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' />
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-smallimg-txt txt txt-16">{item.image.alt}</div>
+                                        )}
                                     </div>
                                 ))}
                             </div>
@@ -154,6 +166,9 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 {data.big_images_final_design.map((item) => (
                                     <div className="proj-dtl-body-final_design-bigimg proj-dtl-body-bigimg" key={item.image.id}>
                                         <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' key={item.id} />
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-bigimg-txt txt txt-16">{item.image.alt}</div>
+                                        )}
                                     </div>
                                 ))}
                             </div>
@@ -163,6 +178,9 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 {data.small_images_final_design.map((item) => (
                                     <div className="proj-dtl-body-final_design-smallimg proj-dtl-body-smallimg" key={item.image.id}>
                                         <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' key={item.id} />
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-smallimg-txt txt txt-16">{item.image.alt}</div>
+                                        )}
                                     </div>
                                 ))}
                             </div>
@@ -182,7 +200,7 @@ const ProjectDetailBody = ({ data, ...props }) => {
                         )}
                         {!isEmpty(data.sub_describle_takeaway) && (
                             <div className="proj-dtl-body-takeaway-subdesc-wrapper proj-dtl-body-subdesc-wrapper">
-                               {data.sub_describle_takeaway?.map((item, idx) => (
+                                {data.sub_describle_takeaway?.map((item, idx) => (
                                     <div className="proj-dtl-body-takeaway-subdesc-item proj-dtl-body-subdesc" key={idx}>
                                         <div className="line line-ver" />
                                         <div className="proj-dtl-body-takeaway-subdesc-item-title proj-dtl-body-subdesc-title txt txt-32">{item.title[0]?.text}</div>
@@ -196,6 +214,9 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 {data.big_images_takeaway.map((item) => (
                                     <div className="proj-dtl-body-takeaway-bigimg proj-dtl-body-bigimg" key={item.image.id}>
                                         <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' key={item.id} />
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-bigimg-txt txt txt-16">{item.image.alt}</div>
+                                        )}
                                     </div>
                                 ))}
                             </div>
@@ -205,6 +226,9 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 {data.small_images_takeaway.map((item) => (
                                     <div className="proj-dtl-body-takeaway-smallimg proj-dtl-body-smallimg" key={item.image.id}>
                                         <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' key={item.id} />
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-smallimg-txt txt txt-16">{item.image.alt}</div>
+                                        )}
                                     </div>
                                 ))}
                             </div>

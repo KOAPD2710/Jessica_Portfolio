@@ -151,11 +151,11 @@ button {
 }
 
 .txt:has(.split-line, .split-word, .split-char) {
-    padding-bottom: .1em;
+    // padding-bottom: .1em;
 }
 
 .split {
-    &-line, &-word {
+    &-word {
         contain: paint;
 
         padding: .1em;
