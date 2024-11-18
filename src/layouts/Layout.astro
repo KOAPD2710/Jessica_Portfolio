@@ -8,13 +8,13 @@ import GridDebugger from "@/components/gridDebugger/gridDebugger.astro";
 import MainScript from "@/js/main";
 
 import ViewTransitions from "astro/components/ViewTransitions.astro";
-const { title } = Astro.props;
+const { title, isWhiteBg } = Astro.props;
 
-const pathname = Astro.url.pathname
+const pathname = Astro.url.pathname;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class=`${isWhiteBg && 'white'}`>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -23,7 +23,7 @@ const pathname = Astro.url.pathname
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body class="on-load">
+	<body class=`on-load ${isWhiteBg && 'white'}`>
 		<script>
 			import gsap from "gsap";
 			import ScrollTrigger from "gsap/ScrollTrigger";
@@ -53,8 +53,8 @@ const pathname = Astro.url.pathname
 		</script>
 		<!-- <Theme /> -->
 		 <ViewTransitions/>
-		<Header/>
-		<main class="main">
+		<Header isWhiteBg={isWhiteBg}/>
+		<main class={`main ${isWhiteBg && 'white'}`}>
 			<slot />
 		</main>
 		<Footer/>

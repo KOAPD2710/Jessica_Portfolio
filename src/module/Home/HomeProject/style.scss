@@ -148,6 +148,8 @@
         &-scope {
             opacity: .65;
 
+            margin-bottom: .12em;
+
             @include sm {
                 @include text(16);
             }

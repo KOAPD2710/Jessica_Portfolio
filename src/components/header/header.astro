@@ -1,5 +1,6 @@
 ---
 import HeaderComponent from ".";
+const { isWhiteBg } = Astro.props;
 
 
 const ListMenu = [
@@ -17,4 +18,4 @@ const ListMenu = [
     }
 ]
 ---
-<HeaderComponent listMenu={ListMenu} client:load/>
+<HeaderComponent isWhiteBg={isWhiteBg} listMenu={ListMenu} client:load/>

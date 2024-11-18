@@ -7,13 +7,31 @@
 
         padding-top: 18.3rem;
 
+        @include sm {
+            padding-top: 11.2rem;
+        }
+
         &-title {
+
+            @include sm {
+                @include text(32);
+
+                margin-bottom: 1.2rem;
+            }
+
             &-wrapper {
                 grid-column: 1/-1;
                 display: flex;
                 column-gap: 1.2rem;
                 align-items: end;
-                margin-bottom: 5.2rem;
+                margin-bottom: 10rem;
+
+                @include sm {
+                    flex-direction: column;
+                    align-items: unset;
+
+                    margin-bottom: 4rem;
+                }
             }
         }
 
@@ -28,9 +46,19 @@
             opacity: .9;
 
             margin-bottom: 4rem;
+
+            @include sm {
+                grid-column: 1/-1;
+
+                @include text(22);
+            }
         }
         &-cta {
             grid-column: 1/7;
+
+            @include sm {
+                grid-column: 1/-1;
+            }
         }
         &-info {
             grid-column: 8/-1;
@@ -38,18 +66,27 @@
             display: flex;
             flex-direction: column;
 
+            @include sm {
+                grid-column: 1/-1;
+
+                margin-bottom: 10rem;
+            }
+
             &-item {
                 position: relative;
                 display: flex;
                 justify-content: space-between;
+                column-gap: 2.8rem;
                 padding-block: 2.4rem;
 
                 &-name {
                     opacity: 0.65;
+                    flex-shrink: 0;
                 }
 
                 &-desc {
-
+                    text-align: end;
+                    flex-grow: 0;
                 }
 
                 .line {

@@ -4,18 +4,26 @@ import ProjectDetailHeroComponent from './'
 import { isEmpty } from '@/js/utils'
 
 const ListInfo = [
+    !isEmpty(Astro.props.data.duration) && {
+        ...Astro.props.data.duration[0],
+        name: 'Duration'
+    },
+    !isEmpty(Astro.props.data.skill) && {
+        ...Astro.props.data.skill[0],
+        name: 'Skills'
+    },
     !isEmpty(Astro.props.data.role) && {
         ...Astro.props.data.role[0],
         name: 'Role'
     },
-    !isEmpty(Astro.props.data.team) && {
-        ...Astro.props.data.team[0],
-        name: 'Team'
-    },
-    !isEmpty(Astro.props.data.category) && {
-        ...Astro.props.data.category[0],
-        name: 'Category'
-    }
+    // !isEmpty(Astro.props.data.team) && {
+    //     ...Astro.props.data.team[0],
+    //     name: 'Team'
+    // },
+    // !isEmpty(Astro.props.data.category) && {
+    //     ...Astro.props.data.category[0],
+    //     name: 'Category'
+    // }
 ].filter(Boolean);
 ---
 

@@ -2,8 +2,15 @@
 import HomeHeroComponent from "."
 import { Image } from 'astro:assets';
 import HeroImage from '@assets/home-hero-1.jpg';
+import { getAllByType } from "@/js/core/prismic";
+
+const allProj = await getAllByType('project');
+const allThumb = allProj.map((item) => {return item.data.thumbnail})
 ---
 
-<HomeHeroComponent client:load>
-    <Image src={HeroImage} alt="" slot="HeroImage" class="img img-fill"/>
+<HomeHeroComponent
+    allThumb={allThumb}
+    client:load
+>
+    <!-- <Image src={HeroImage} alt="" slot="HeroImage" class="img img-fill"/> -->
 </HomeHeroComponent>

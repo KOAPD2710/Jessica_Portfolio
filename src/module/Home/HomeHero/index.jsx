@@ -2,19 +2,23 @@ import { useGSAP } from '@gsap/react'
 import './style.scss'
 import { useEffect, useRef } from "react"
 import SplitType from 'split-type'
-import { title } from 'node_modules/@prismicio/client/dist/helpers/isFilled'
 import { typeSplit } from '@/js/utils';
+import cn from 'clsx';
 import gsap from 'gsap'
 
-const HomeHero = ({ HeroImage, ...props }) => {
+const HomeHero = ({ HeroImage, allThumb, ...props }) => {
     const container = useRef()
     const image = useRef()
     const title = useRef()
     const label = useRef()
     const desc = useRef()
     const scrollDown = useRef()
+    const allThumbItems = useRef([])
 
     useGSAP(() => {
+
+        let timeout;
+
         const tlImg = gsap.timeline({
             scrollTrigger: {
                 trigger: container.current,
@@ -38,12 +42,19 @@ const HomeHero = ({ HeroImage, ...props }) => {
             scrollDown: new SplitType(scrollDown.current, typeSplit.words),
         }
 
+        const animImg = (idx) => {
+            timeout = setTimeout(() => {
+
+            }, 2000);
+        }
 
         const tlOnEnter = gsap.timeline({
             delay: .6,
             onComplete: () => {
                 split.title.revert()
                 split.label.revert()
+                split.desc.revert()
+                split.scrollDown.revert()
             }
         })
 
@@ -101,7 +112,12 @@ const HomeHero = ({ HeroImage, ...props }) => {
                 </div>
                 <div className="home-hero-img-wrapper" ref={image}>
                     <div className="home-hero-img">
-                        {HeroImage}
+                        {allThumb.map((item, idx) => (
+                            <div className={cn('home-hero-img-inner', idx === 0 && 'active')} key={item.id} ref={(item) => allThumbItems.current.push(item)}>
+                                <img src={item.url} alt="" className='img img-fill' />
+                            </div>
+                        ))}
+                        {/* {HeroImage} */}
                     </div>
                 </div>
                 <div className="home-hero-title h0 txt" ref={title}>
