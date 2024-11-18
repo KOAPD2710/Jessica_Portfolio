@@ -9,10 +9,15 @@ const ListProjFilterd = await Promise.all(
         return dataPage;
     })
 );
+const EM = ListProjFilterd.findIndex(obj => obj.slugs[0] === "expense-management");
+if ( EM !== -1 && EM !== 1 ) {
+    
+    const EMO = ListProjFilterd.splice(EM, 1)[0];
+    ListProjFilterd.splice(1, 0, EMO);
+}
 ---
 
-
-<ProjectDetailNextProjComponent 
+<ProjectDetailNextProjComponent
     list={ListProjFilterd}
     client:visible={{ rootMargin: "100% 0px 100% 0px" }}
 />

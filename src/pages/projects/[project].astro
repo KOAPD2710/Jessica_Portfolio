@@ -31,7 +31,7 @@ const HomePage = await getPage("home_page");
 
 const ListUID = HomePage.data.project_list.map(el => el.project.uid)
 ---
-<Layout title={`Project ${dataPage.name[0].text}`}>
+<Layout title={`Project ${dataPage.name[0].text}`} isWhiteBg={true} >
   <ProjectDetailHero data={dataPage}/>
   <ProjectDetailBody data={dataPage}/>
   <ProjectDetailNextProj currentProj={project} listProj={ListUID}/>

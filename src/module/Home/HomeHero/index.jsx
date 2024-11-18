@@ -6,7 +6,7 @@ import { typeSplit } from '@/js/utils';
 import cn from 'clsx';
 import gsap from 'gsap'
 
-const HomeHero = ({ HeroImage, allThumb,  ...props }) => {
+const HomeHero = ({ HeroImage, allThumb, ...props }) => {
     const container = useRef()
     const image = useRef()
     const title = useRef()
@@ -16,7 +16,6 @@ const HomeHero = ({ HeroImage, allThumb,  ...props }) => {
     const allThumbItems = useRef([])
 
     useGSAP(() => {
-        // console.log(allThumbItems)
 
         let timeout;
 
@@ -45,7 +44,7 @@ const HomeHero = ({ HeroImage, allThumb,  ...props }) => {
 
         const animImg = (idx) => {
             timeout = setTimeout(() => {
-                
+
             }, 2000);
         }
 
@@ -54,6 +53,8 @@ const HomeHero = ({ HeroImage, allThumb,  ...props }) => {
             onComplete: () => {
                 split.title.revert()
                 split.label.revert()
+                split.desc.revert()
+                split.scrollDown.revert()
             }
         })
 

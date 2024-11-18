@@ -27,12 +27,18 @@ html {
         pointer-events: none;
     }
 }
-
+html.white {
+    background-color: #fff;
+}
 
 .main {
     position: relative;
     z-index: 2;
     background-color: $cl-white;
+
+    &.white {
+        background-color: #fff;
+    }
 }
 
 .main {

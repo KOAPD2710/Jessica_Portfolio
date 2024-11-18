@@ -33,6 +33,12 @@
         }
     }
 
+    &-txt {
+        @include sm {
+            @include text(16);
+        }
+    }
+
     @include hover {
 
         .arrowUpRight-ic {

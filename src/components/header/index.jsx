@@ -5,10 +5,10 @@ import cn from 'clsx';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 
-export default function Header({ listMenu, ...props }) {
+export default function Header({ listMenu, isWhiteBg, ...props }) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const container = useRef();
-    
+
     let lenis;
 
     useEffect(() => {
@@ -72,11 +72,13 @@ export default function Header({ listMenu, ...props }) {
     })
 
     function onClickScrollTo(href) {
-        console.log(href)
+        if (!lenis) {
+            lenis = getLenis();
+        }
         if (href === '#contact') {
-            lenis.scrollTo(lenis.limit)
+            lenis?.scrollTo(lenis?.limit)
         } else {
-            lenis.scrollTo(href)
+            lenis?.scrollTo(href)
         }
     }
 
@@ -98,7 +100,7 @@ export default function Header({ listMenu, ...props }) {
     // }, [isMenuOpen])
 
     return (
-        <header className={cn('header', isMenuOpen && 'menu-opening')} ref={container}>
+        <header className={cn('header', isMenuOpen && 'menu-opening', isWhiteBg && "white")} ref={container}>
             <div className="container grid">
                 <a href="/" className="header-logo">
                     <div className="header-logo-wrapper">
@@ -113,14 +115,14 @@ export default function Header({ listMenu, ...props }) {
                     {listMenu.map((item) => (
                         <a href={item.link} onClick={(e) => onClickScrollTo(item.link)} className="header-menu-item txt-up txt-med" key={item.name}>
                             {item.name}
-                            <span className='header-menu-item-span'/>
+                            <span className='header-menu-item-span' />
                         </a>
                     ))}
                 </div>
                 <a href='/' className='header-toggle' onClick={(e) => onClickToggleMenu(e)}>
                     <div className='header-toggle-inner'>
-                        <span/>
-                        <span/>
+                        <span />
+                        <span />
                     </div>
                 </a>
             </div>

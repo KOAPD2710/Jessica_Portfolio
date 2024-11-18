@@ -10,10 +10,15 @@
     z-index: 999;
     mix-blend-mode: difference;
     filter: invert(1);
+    background-color: transparent;
 
     transition: color .3s cubic-bezier(0.215, 0.610, 0.355, 1);
 
     @include sm {
+
+        &.white {
+            background-color: #fff;
+        }
         background-color: $cl-white;
         mix-blend-mode: unset;
         filter: unset;

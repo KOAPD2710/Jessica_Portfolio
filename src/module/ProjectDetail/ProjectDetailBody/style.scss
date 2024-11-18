@@ -7,9 +7,18 @@
 
     &-thumb {
         @include size(100%, 101.25rem);
+        overflow: hidden;
+
+        @include sm {
+            height: 50rem;
+        }
 
         &-wrapper {
             grid-column: 1/-1;
+        }
+
+        &-inner {
+            @include size(100%, 110%);
         }
     }
 
@@ -18,6 +27,10 @@
         
         &-wrapper {
             grid-column: 1/4;
+
+            @include sm {
+                grid-column: 1/-1;
+            }
         }
     }
     &-sub {
@@ -26,6 +39,10 @@
     &-desc {
         grid-column: 9/-1;
         line-height: 1.4;
+
+        @include sm {
+            grid-column: 1/-1;
+        }
 
         p {
             margin-bottom: 4rem;
@@ -50,6 +67,11 @@
             grid-template-columns: repeat(2, 1fr);
             column-gap: var(--grid-gap);
             row-gap: 3.2rem;
+
+            @include sm {
+                grid-column: 1/-1;
+                grid-template-columns: 1fr;
+            }
         }
 
         &-title {
@@ -69,6 +91,14 @@
 
     &-label-wrapper, &-desc, &-subdesc-wrapper {
         margin-block: 10rem 6rem;
+
+        &.gap-off {
+            margin-top: 0rem;
+        }
+
+        @include sm {
+            margin-block: 4rem 2rem;
+        }
     }
     &-bigimg {
         width: 100%;
@@ -101,11 +131,39 @@
 
             margin-bottom: 2rem;
 
+
+            @include sm {
+                grid-template-columns: 1fr;
+            }
+
         }
 
         &-txt {
             opacity: .5;
             margin-top: 1.4rem;
+        }
+    }
+
+    &-group_content {
+        &-wrapper {
+            grid-column: 1/-1;
+
+            display: grid;
+            grid-template-columns: repeat(var(--grid-column), 1fr);
+            row-gap: 6rem;
+            margin-block: 4rem;
+        }
+
+        &-content {
+            grid-column: 9/-1;
+
+            &-title {
+                margin-bottom: 1.6rem;
+            }
+        }
+
+        &-img {
+            grid-column: 1/-1;
         }
     }
 
@@ -119,5 +177,20 @@
 
     &-takeaway {
 
+    }
+
+    &-coming {
+        grid-column: 9/-1;
+
+        margin-block: 10rem 6rem;
+
+        @include sm {
+            grid-column: 1/-1;
+        }
+
+
+        &-title {
+            margin-bottom: 1.6rem;
+        }
     }
 }

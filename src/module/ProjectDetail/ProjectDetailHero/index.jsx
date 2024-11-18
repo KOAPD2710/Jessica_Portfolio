@@ -8,7 +8,7 @@ import { useEffect } from "react";
 const ProjectDetailHero = ({ data, ListInfo, ...props }) => {
 
     useEffect(() => {
-        console.log(data);
+        // console.log(data);
 
     }, [])
 
