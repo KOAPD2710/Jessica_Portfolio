@@ -1,7 +1,7 @@
 ---
 import ProjectDetailNextProjComponent from './'
 import { getByUID } from '@/js/core/prismic';
-const { currentProj, listProj } = Astro.props;
+const { currentProj, listProj } = await Astro.props;
 
 const ListProjFilterd = await Promise.all(
     listProj.filter(proj => proj !== currentProj).map(async proj => {
