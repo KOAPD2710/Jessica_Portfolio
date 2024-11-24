@@ -29,12 +29,12 @@ const pathname = Astro.url.pathname;
 			import ScrollTrigger from "gsap/ScrollTrigger";
 			import { getLenis } from "@/js/core/lenis";
 
+			gsap?.registerPlugin(ScrollTrigger);
 			const lenis = getLenis();
 
 			window.gsap = gsap;
 			window.ScrollTrigger = ScrollTrigger;
 
-			gsap?.registerPlugin(ScrollTrigger);
 			gsap?.defaults({
 				ease: "none",
 				duration: 1,

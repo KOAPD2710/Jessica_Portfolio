@@ -10,7 +10,7 @@ const HomeProject = ({ Project, Title, ...props }) => {
                 <div className="home-project-heading">
                     <h1 className="home-project-title">{Title.text}</h1>
                     <div className="home-project-count-wrapper">
-                        <div className="home-project-count">{Project.length} project</div>
+                        <div className="home-project-count">{Project.length} projects</div>
                         <div className="home-project-year">
                             (2023-2024)
                         </div>
