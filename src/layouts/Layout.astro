@@ -8,7 +8,7 @@ import GridDebugger from "@/components/gridDebugger/gridDebugger.astro";
 import MainScript from "@/js/main";
 
 import ViewTransitions from "astro/components/ViewTransitions.astro";
-const { title, isWhiteBg } = Astro.props;
+const { title, description, isWhiteBg } = Astro.props;
 
 const pathname = Astro.url.pathname;
 ---
@@ -17,7 +17,7 @@ const pathname = Astro.url.pathname;
 <html lang="en" class=`${isWhiteBg && 'white'}`>
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
