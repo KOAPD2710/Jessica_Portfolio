@@ -17,8 +17,6 @@ const HomeHero = ({ HeroImage, allThumb, ...props }) => {
 
     useGSAP(() => {
 
-        let timeout;
-
         const tlImg = gsap.timeline({
             scrollTrigger: {
                 trigger: container.current,
@@ -43,9 +41,8 @@ const HomeHero = ({ HeroImage, allThumb, ...props }) => {
         }
 
         const animImg = (idx) => {
-            timeout = setTimeout(() => {
-
-            }, 2000);
+            allThumbItems.current.forEach((el, idx) => {
+            });
         }
 
         const tlOnEnter = gsap.timeline({
@@ -99,6 +96,12 @@ const HomeHero = ({ HeroImage, allThumb, ...props }) => {
                 duration: .6,
                 ease: 'power1.out'
             }, '0+=.15')
+            .add(animImg)
+
+
+        return () => {
+            // timeout && clearTimeout(timeout)
+        }
     }, {
         scope: container.current,
     })

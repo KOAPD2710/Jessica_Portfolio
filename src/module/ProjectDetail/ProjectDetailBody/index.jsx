@@ -207,17 +207,23 @@ const ProjectDetailBody = ({ data, ...props }) => {
                             </div>
                         )}
                         {!isEmpty(data.group_content_final_design) && (
-                            <div className="proj-dtl-body-result-group_content-wrapper proj-dtl-body-group_content-wrapper">
+                            <div className="proj-dtl-body-final_design-group_content-wrapper proj-dtl-body-group_content-wrapper">
                                 {data.group_content_final_design.map((item, idx) => (
                                     <Fragment key={idx}>
-                                        <div className="proj-dtl-body-result-group_content-content proj-dtl-body-group_content-content">
-                                            <div className="proj-dtl-body-result-group_content-content-title proj-dtl-body-group_content-content-title h5" >
+                                        <div className="proj-dtl-body-final_design-group_content-content proj-dtl-body-group_content-content">
+                                            <div className="proj-dtl-body-final_design-group_content-content-title proj-dtl-body-group_content-content-title h5" >
                                                 {item.title[0]?.text}
                                             </div>
                                             {item.desc[0]?.text}
                                         </div>
-                                        <div className="proj-dtl-body-result-group_content-img proj-dtl-body-group_content-img">
-                                            <img src={item.image?.url} alt="" />
+                                        <div className="proj-dtl-body-final_design-group_content-img proj-dtl-body-group_content-img">
+                                            {!isEmpty(item.media) ? (
+                                                <video playsInline autoPlay muted loop className='img img-fill'>
+                                                    <source src={item.media.url} type="video/mp4" />
+                                                </video>
+                                            ) : (
+                                                <img src={item.image?.url} alt="" className='img img-fill' />
+                                            )}
                                         </div>
                                     </Fragment>
                                 ))}

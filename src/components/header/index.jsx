@@ -113,7 +113,7 @@ export default function Header({ listMenu, isWhiteBg, ...props }) {
                 <div className="header-label txt-up txt-med">PORTFOLIO 2024</div>
                 <div className="header-menu">
                     {listMenu.map((item) => (
-                        <a href={item.link} onClick={(e) => onClickScrollTo(item.link)} className="header-menu-item txt-up txt-med" key={item.name}>
+                        <a href={`/${item.link}`} onClick={(e) => onClickScrollTo(item.link)} className="header-menu-item txt-up txt-med" key={item.name}>
                             {item.name}
                             <span className='header-menu-item-span' />
                         </a>
