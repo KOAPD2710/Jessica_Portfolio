@@ -19,4 +19,11 @@ export default defineConfig({
     image: {
         service: passthroughImageService(),
     },
+    vite: {
+        ssr: {
+            noExternal: [
+                'gsap'
+            ]
+        }
+    }
 });
