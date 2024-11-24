@@ -1,13 +1,16 @@
 import './style.scss';
 import gsap from 'gsap';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useGSAP } from "@gsap/react";
 import SplitType from 'split-type';
 import { typeSplit } from '@/js/utils';
+import parse from 'html-react-parser';
 
 const HomeJourney = ({ ...props }) => {
 
-    const content = "For me, transitioning to UX/UI was a necessary career shift that I chose to pursue. With two years of experience—though not extensive—it marks the beginning and the progress I've made on this journey.Below are some selected works I've had the opportunity to create over the past two years alongside my beloved colleagues and teammates."
+    const content = "For me, transitioning to UX/UI was a necessary career shift that I chose to pursue. With two years of experience—though not extensive—it marks the beginning and the progress I've made on this journey.Below are some selected works I've had the opportunity to create over the past two years alongside my belo—ved colleagues and— teammates."
+
+    const renderTxt = content.replace(/—/g, '<span>—</span>')
 
     const container = useRef()
     const contentTopRef = useRef()
@@ -15,7 +18,7 @@ const HomeJourney = ({ ...props }) => {
 
     useGSAP(() => {
         const split = {
-            descTop: new SplitType(contentTopRef.current, { ...typeSplit.chars }),
+            descTop: new SplitType(contentTopRef.current, { ...typeSplit.chars, split: '—' }),
         }
 
         const tlScrubText = gsap.timeline({
@@ -37,14 +40,6 @@ const HomeJourney = ({ ...props }) => {
             opacity: 1,
             stagger: 0.08
         })
-
-        // split.descTop.lines.forEach((el, idx) => {
-        //     tlScrub.fromTo(el, {
-        //         '--size': '100%'
-        //     }, {
-        //         '--size': '0%'
-        //     })
-        // })
 
         const tlScrubClipTop = gsap.timeline({
             scrollTrigger: {
@@ -93,11 +88,11 @@ const HomeJourney = ({ ...props }) => {
                 <div className="home-journey-line-wrapper" />
                 <div className="home-journey-label txt-24 txt-up">(JOURNEY)</div>
                 <div className="home-journey-content txt-44">
-                    <div className="home-journey-content-inner top txt-clipLine" ref={contentTopRef}>
-                        <span className="txt-spacer" />{content}
+                    <div className="home-journey-content-inner top txt-clipLine" ref={contentTopRef} >
+                        <span className="txt-spacer" />{parse(renderTxt)}
                     </div>
                     <div className="home-journey-content-inner bot" ref={contentBotRef}>
-                        <span className="txt-spacer" />{content}
+                        <span className="txt-spacer" />{parse(renderTxt)}
                     </div>
                 </div>
             </div>
