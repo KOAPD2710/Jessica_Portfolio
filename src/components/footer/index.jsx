@@ -1,13 +1,24 @@
-import { typeSplit } from '@/js/utils';
+import { debounce, typeSplit } from '@/js/utils';
 import './style.scss';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import SplitType from 'split-type';
 
-const Footer = ({ Email, Social, ...props }) => {
+const Footer = ({ ...props }) => {
+    const copyEmailTxt = useRef();
 
     useEffect(() => {
-        // const title = new SplitType('.footer-mail-inner', typeSplit.chars)
+        // console.log(props);
     }, [])
+
+    const copyEmail = (event, mail) => {
+        event.preventDefault();
+        navigator.clipboard.writeText(mail);
+        const defaultTxt = copyEmailTxt.current.innerHTML;
+        copyEmailTxt.current.innerHTML = "copied";
+        setTimeout(() => {
+            copyEmailTxt.current.innerHTML = defaultTxt
+        }, 1500);
+    }
     return (
         <footer className="footer" id="contact">
             <div className="container grid">
@@ -16,10 +27,10 @@ const Footer = ({ Email, Social, ...props }) => {
                     <div className="footer-desc">I'm here to listen, collaborate, and craft design solutions that resonate.</div>
                 </div>
                 <div className="footer-mail-wrapper">
-                    <a href={`mailto:${Email}`} className="footer-mail h2">
-                        <span className='footer-mail-txt'>{Email}</span>
+                    <a href="#" onClick={(event) => copyEmail(event, props.email.url)} className="footer-mail h2">
+                        <span className='footer-mail-txt'>{props.email.url}</span>
                         <span className='footer-mail-txt-sm txt txt-18 txt-up'>
-                            <span>(TAP TO COPY </span>🌞<span>)</span>
+                            <span>(</span><span className='change-txt' ref={copyEmailTxt}>TAP TO COPY </span>🌞<span>)</span>
                         </span>
                     </a>
                 </div>
@@ -27,9 +38,9 @@ const Footer = ({ Email, Social, ...props }) => {
                     <div className="line line-top" />
                     <div className="footer-social-label">(SOCIALS)</div>
                     <div className="footer-social-list">
-                        {Social.map((item, idx) => (
-                            <a href={item.link} className="footer-social-item txt-up" key={idx}>
-                                {item.name}
+                        {props.social_link.map((item, idx) => (
+                            <a href={item.link.url} className="footer-social-item txt-up" key={idx}>
+                                {item.platform[0].text}
                             </a>
                         ))}
                     </div>
