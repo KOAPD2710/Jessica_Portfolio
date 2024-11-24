@@ -6,11 +6,13 @@ import HomeProject from '@module/Home/HomeProject/HomeProject.astro';
 import HomeAbout from '@module/Home/HomeAbout/HomeAbout.astro';
 import { getPage } from '@/js/core/prismic'
 const { data } = await getPage("home_page");
-
-// console.log(data)
 ---
 
-<Layout title="Phuong Nguyen" description="Jessica's Portfolio">
+<Layout
+    title="Phuong Nguyen"
+    description="Jessica's Portfolio"
+    openGraph={data?.seo_open_graph?.url}
+>
     <HomeHero/>
     <HomeJourney/>
     <HomeProject 

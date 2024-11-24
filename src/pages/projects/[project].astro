@@ -28,13 +28,12 @@ import { getPage } from '@/js/core/prismic'
 const HomePage = await getPage("home_page");
 
 const ListUID = HomePage.data.project_list.map(el => el.project.uid)
-
-console.log(dataPage.describe[0].text);
-
 ---
 <Layout
   title={`Project ${dataPage.name[0].text}`}
   description={dataPage.describe[0].text}
+  openGraph={dataPage?.thumbnail?.url}
+
   isWhiteBg={true}
 >
   <ProjectDetailHero data={dataPage}/>
