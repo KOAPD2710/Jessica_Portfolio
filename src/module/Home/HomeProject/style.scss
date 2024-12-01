@@ -36,6 +36,8 @@
                 @include sm {
                     display: flex;
                     column-gap: 1rem;
+
+                    @include text(22);
                 }
             }
         }
@@ -143,6 +145,26 @@
                 @include text(22);
 
                 margin-bottom: .8rem;
+            }
+
+            &-wrapper {
+                display: flex;
+
+                @include sm {
+                    justify-content: space-between;
+                    align-items: center;
+                }
+            }
+
+            &-ic {
+                display: none;
+
+                @include sm {
+                    display: block;
+
+                    @include size(1.8rem);
+                    color: $cl-orange;
+                }
             }
         }
         &-scope {
