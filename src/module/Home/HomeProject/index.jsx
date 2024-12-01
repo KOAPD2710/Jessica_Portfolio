@@ -2,6 +2,8 @@ import { useEffect, useRef } from 'react';
 import './style.scss';
 import { useGSAP } from '@gsap/react';
 import ArrowUpRight from '@/components/arrowUpRight';
+import ArrUpRightIc from '@assets/svg/arrow-up-right.svg?raw';
+
 
 const HomeProject = ({ Project, Title, ...props }) => {
     return (
@@ -77,7 +79,10 @@ const ProjectItem = ({ ...props }) => {
                 </div>
             </div>
             <div className="project-item-heading">
-                <div className="project-item-name txt txt-32">{name[0].text}</div>
+                <div className="project-item-name-wrapper">
+                    <div className="project-item-name txt txt-32">{name[0].text}</div>
+                    <div className="project-item-name-ic" dangerouslySetInnerHTML={{ __html: ArrUpRightIc }} />
+                </div>
                 <div className="project-item-scope">({category[0]?.text}{role[0]?.text && `, ${role[0].text}`})</div>
                 <div className="project-item-no">{(No + 1).toString().padStart(2, '0')}</div>
             </div>

@@ -31,7 +31,7 @@ const ProjectDetailBody = ({ data, ...props }) => {
     })
 
     useEffect(() => {
-        // console.log(data.group_content_final_design);
+        console.log(data);
     }, [])
 
     return (
@@ -161,6 +161,102 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                             <div className="proj-dtl-body-smallimg-txt txt txt-16">{item.image.alt}</div>
                                         )}
                                     </div>
+                                ))}
+                            </div>
+                        )}
+                    </Fragment>
+                )}
+                {data.show_user_research && (
+                    <Fragment>
+                        <div className="proj-dtl-body-user_research-label-wrapper proj-dtl-body-label-wrapper">
+                            <div className="proj-dtl-body-user_research-label proj-dtl-body-label txt txt-up">({data.label_user_research[0]?.text})</div>
+                            <div className="proj-dtl-body-user_research-sub proj-dtl-body-sub txt">{data.subtitle_user_research[0]?.text}</div>
+                        </div>
+                        {!isEmpty(data.desc_user_research) && (
+                            <div className="proj-dtl-body-user_research-desc-wrapper proj-dtl-body-desc">
+                                <div className="proj-dtl-body-user_research-desc txt" dangerouslySetInnerHTML={{ __html: prismic.asHTML(data.desc_user_research) }} />
+                            </div>
+                        )}
+                        {(!isEmpty(data.big_image_user_research[0]?.image) && !isEmpty(data.big_image_user_research)) && (
+                            <div className="proj-dtl-body-user_research-bigimg-wrapper proj-dtl-body-bigimg-wrapper">
+                                {data.big_image_user_research.map((item) => (
+                                    <div className="proj-dtl-body-user_research-bigimg proj-dtl-body-bigimg" key={item.image.id}>
+                                        <div className="proj-dtl-body-user_research-bigimg-inner proj-dtl-body-bigimg">
+                                            <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' />
+                                        </div>
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-bigimg-txt txt txt-16">{item.img.alt}</div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        {(!isEmpty(data.small_image_user_research[0]?.image) && !isEmpty(data.small_image_user_research)) && (
+                            <div className="proj-dtl-body-user_research-smallimg-wrapper proj-dtl-body-smallimg-wrapper">
+                                {data.small_image_user_research.map((item) => (
+                                    <div className="proj-dtl-body-user_research-smallimg proj-dtl-body-smallimg" key={item.image.id}>
+                                        <div className="proj-dtl-body-user_research-smallimg-inner proj-dtl-body-smallimg-inner">
+                                            <img src={item.image.url} alt={item.image.alt} width={item.image.dimensions.width} height={item.image.dimensions.height} className='img img-fill' />
+                                        </div>
+                                        {!isEmpty(item.image.alt) && (
+                                            <div className="proj-dtl-body-smallimg-txt txt txt-16">{item.image.alt}</div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                        {!isEmpty(data.group_content_user_research) && (
+                            <div className="proj-dtl-body-user_research-group_content-wrapper proj-dtl-body-group_content-wrapper">
+                                {data.group_content_user_research.map((item, idx) => (
+                                    <Fragment key={idx}>
+                                        <div className="proj-dtl-body-user_research-group_content-content proj-dtl-body-group_content-content">
+                                            <div className="proj-dtl-body-user_research-group_content-content-title proj-dtl-body-group_content-content-title h5" >
+                                                {item.title[0]?.text}
+                                            </div>
+                                            {item.desc[0]?.text}
+                                        </div>
+                                        <div className="proj-dtl-body-user_research-group_content-img proj-dtl-body-group_content-img">
+                                            {!isEmpty(item.media) ? (
+                                                <video playsInline autoPlay muted loop className='img img-fill'>
+                                                    <source src={item.media.url} type="video/mp4" />
+                                                </video>
+                                            ) : (
+                                                <img src={item.image?.url} alt="" className='img img-fill' />
+                                            )}
+                                        </div>
+                                    </Fragment>
+                                ))}
+                            </div>
+                        )}
+                    </Fragment>
+                )}
+
+                {data.show_proposed_solutions && (
+                    <Fragment>
+                        <div className="proj-dtl-body-show_proposed_solutions-label-wrapper proj-dtl-body-label-wrapper">
+                            <div className="proj-dtl-body-proposed_solutions-label proj-dtl-body-label txt txt-up">({data.label_proposed_solutions[0]?.text})</div>
+                            <div className="proj-dtl-body-proposed_solutions-sub proj-dtl-body-sub txt">{data.subtitle_proposed_solutions[0]?.text}</div>
+                        </div>
+                        {!isEmpty(data.group_content_proposed_solutions) && (
+                            <div className="proj-dtl-body-proposed_solutions-group_content-wrapper proj-dtl-body-group_content-wrapper">
+                                {data.group_content_proposed_solutions.map((item, idx) => (
+                                    <Fragment key={idx}>
+                                        <div className="proj-dtl-body-proposed_solutions-group_content-content proj-dtl-body-group_content-content">
+                                            <div className="proj-dtl-body-proposed_solutions-group_content-content-title proj-dtl-body-group_content-content-title h5" >
+                                                {item.title[0]?.text}
+                                            </div>
+                                            <div className="proj-dtl-body-proposed_solutions-group_content-content-desc proj-dtl-body-group_content-content-desc" dangerouslySetInnerHTML={{ __html: prismic.asHTML(item.content) }} />
+                                        </div>
+                                        <div className="proj-dtl-body-proposed_solutions-group_content-img proj-dtl-body-group_content-img">
+                                            {!isEmpty(item.media) ? (
+                                                <video playsInline autoPlay muted loop className='img img-fill'>
+                                                    <source src={item.media.url} type="video/mp4" />
+                                                </video>
+                                            ) : (
+                                                <img src={item.image?.url} alt="" className='img img-fill' />
+                                            )}
+                                        </div>
+                                    </Fragment>
                                 ))}
                             </div>
                         )}

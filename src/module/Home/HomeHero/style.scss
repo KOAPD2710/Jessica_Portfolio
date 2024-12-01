@@ -87,7 +87,7 @@
                 grid-column: 1/-1;
                 grid-row: 1/2;
 
-                // padding-right: 1.8rem;
+                padding-right: 1.8rem;
 
                 margin-bottom: 3.2rem;
             }
@@ -99,6 +99,10 @@
 
         &-desc {
             opacity: .65;
+
+            @include sm {
+                @include text(22);
+            }
         }
 
         &-scroll {

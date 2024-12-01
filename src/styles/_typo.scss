@@ -16,6 +16,10 @@ html {
 
 body {
     @include text(22);
+
+    @include sm {
+        @include text(16);
+    }
 }
 
 // Heading
