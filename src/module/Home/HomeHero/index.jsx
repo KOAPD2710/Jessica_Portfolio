@@ -1,22 +1,66 @@
-import { useGSAP } from '@gsap/react'
-import './style.scss'
-import { useEffect, useRef } from "react"
-import SplitType from 'split-type'
+import { useGSAP } from '@gsap/react';
+import './style.scss';
+import { useEffect, useRef, useState } from 'react';
+import SplitType from 'split-type';
 import { typeSplit } from '@/js/utils';
 import cn from 'clsx';
-import gsap from 'gsap'
+import gsap from 'gsap';
 
 const HomeHero = ({ HeroImage, allThumb, ...props }) => {
-    const container = useRef()
-    const image = useRef()
-    const title = useRef()
-    const label = useRef()
-    const desc = useRef()
-    const scrollDown = useRef()
-    const allThumbItems = useRef([])
+    const container = useRef();
+    const image = useRef();
+    const title = useRef();
+    const label = useRef();
+    const desc = useRef();
+    const scrollDown = useRef();
+    const allThumbItems = useRef([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [prevIndex, setPrevIndex] = useState(allThumbItems.current.length - 1);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setPrevIndex((prevIndex) => (prevIndex + 1) % allThumb.length);
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % allThumb.length);
+        }, 3500); // Change image every 3 seconds
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, [allThumb.length]);
+
+    useEffect(() => {
+        console.log(currentIndex);
+        console.log(prevIndex);
+    }, [currentIndex]);
 
     useGSAP(() => {
+        gsap.set([...allThumbItems.current], {
+            zIndex: 1,
+        })
+        prevIndex >= 0 && (
+            gsap.set(allThumbItems.current[prevIndex], {
+                zIndex: 2,
+            })
+        )
 
+        const tl = gsap.timeline()
+        tl.set(allThumbItems.current[currentIndex], {
+            zIndex: 3,
+        }).fromTo(allThumbItems.current[currentIndex],
+            { clipPath: 'inset(100% 0% 0% 0%)' },
+            {
+                clipPath: 'inset(0% 0% 0% 0%)', duration: .8, ease: 'sine.out'
+            }, 0
+        ).fromTo(allThumbItems.current[currentIndex].querySelector('img'),
+            { scale: 1.1 },
+            {
+                scale: 1, duration: 4.3, ease: 'none'
+            }, 0
+        );
+    }, {
+        dependencies: [currentIndex],
+        scope: container.current
+    })
+
+    useGSAP(() => {
         const tlImg = gsap.timeline({
             scrollTrigger: {
                 trigger: container.current,
@@ -27,59 +71,61 @@ const HomeHero = ({ HeroImage, allThumb, ...props }) => {
             defaults: {
                 ease: 'none'
             }
-        })
+        });
 
         tlImg.to(image.current.querySelector('.home-hero-img'), {
             yPercent: -20,
-        })
+        });
 
         const split = {
             title: new SplitType(title.current, typeSplit.chars),
             label: new SplitType(label.current, typeSplit.chars),
             desc: new SplitType(desc.current, typeSplit.chars),
             scrollDown: new SplitType(scrollDown.current, typeSplit.words),
-        }
+        };
 
         const animImg = (idx) => {
-            allThumbItems.current.forEach((el, idx) => {
-            });
-        }
+            gsap.fromTo(allThumbItems.current[idx],
+                { opacity: 0 },
+                { opacity: 1, duration: 1 }
+            );
+        };
 
         const tlOnEnter = gsap.timeline({
-            delay: .6,
+            delay: 0.6,
             onComplete: () => {
-                split.title.revert()
-                split.label.revert()
-                split.desc.revert()
-                split.scrollDown.revert()
+                split.title.revert();
+                split.label.revert();
+                split.desc.revert();
+                split.scrollDown.revert();
             }
-        })
+        });
 
         tlOnEnter
             .fromTo(split.title.chars, {
                 yPercent: 100,
             }, {
                 yPercent: 0,
-                stagger: .008,
-                duration: .6,
+                stagger: 0.008,
+                duration: 0.6,
                 ease: 'power1.out'
             })
             .fromTo(split.label.chars, {
                 yPercent: 100,
             }, {
                 yPercent: 0,
-                stagger: .004,
-                duration: .4,
+                stagger: 0.004,
+                duration: 0.4,
                 ease: 'power1.out'
-            }, '<+=.1')
+            }, '<+=0.1')
             .fromTo(split.desc.chars, {
                 yPercent: 100,
             }, {
                 yPercent: 0,
-                stagger: .001,
-                duration: .6,
+                stagger: 0.001,
+                duration: 0.6,
                 ease: 'power1.out'
-            }, '<+=.05')
+            }, '<+=0.05')
             .fromTo(image.current, {
                 clipPath: 'inset(100% 0% 0% 0%)'
             }, {
@@ -87,24 +133,21 @@ const HomeHero = ({ HeroImage, allThumb, ...props }) => {
                 duration: 1,
                 ease: 'power2.out',
                 clearProps: 'all'
-            }, '0+=.15')
+            }, '0+=0.15')
             .fromTo(split.scrollDown.words, {
                 yPercent: 100,
             }, {
                 yPercent: 0,
-                stagger: .001,
-                duration: .6,
+                stagger: 0.001,
+                duration: 0.6,
                 ease: 'power1.out'
-            }, '0+=.15')
-            .add(animImg)
+            }, '0+=0.15')
+        // .add(animImg(currentIndex)); // Animate current image
 
-
-        return () => {
-            // timeout && clearTimeout(timeout)
-        }
+        return () => { };
     }, {
         scope: container.current,
-    })
+    });
 
     return (
         <section className="home-hero" data-theme="light" id="homeHero" ref={container}>
@@ -116,11 +159,14 @@ const HomeHero = ({ HeroImage, allThumb, ...props }) => {
                 <div className="home-hero-img-wrapper" ref={image}>
                     <div className="home-hero-img">
                         {allThumb.map((item, idx) => (
-                            <div className={cn('home-hero-img-inner', idx === 0 && 'active')} key={item.id} ref={(item) => allThumbItems.current.push(item)}>
+                            <div
+                                className={cn('home-hero-img-inner', idx === currentIndex && 'active')}
+                                key={item.id}
+                                ref={(el) => allThumbItems.current[idx] = el} // Store ref for the current index
+                            >
                                 <img src={item.url} alt="" className='img img-fill' />
                             </div>
                         ))}
-                        {/* {HeroImage} */}
                     </div>
                 </div>
                 <div className="home-hero-title h0 txt" ref={title}>
@@ -129,7 +175,7 @@ const HomeHero = ({ HeroImage, allThumb, ...props }) => {
                 <div className="home-hero-scroll txt txt-16 txt-up txt" ref={scrollDown}>scroll down</div>
             </div>
         </section>
-    )
+    );
 }
 
-export default HomeHero
+export default HomeHero;
