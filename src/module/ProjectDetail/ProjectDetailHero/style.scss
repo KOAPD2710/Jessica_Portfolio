@@ -14,9 +14,7 @@
         &-title {
 
             @include sm {
-                @include text(32);
-
-                margin-bottom: 1.2rem;
+                @include text(44);
             }
 
             &-wrapper {
@@ -27,10 +25,11 @@
                 margin-bottom: 10rem;
 
                 @include sm {
-                    flex-direction: column;
+                    // flex-direction: column;
                     align-items: unset;
+                    flex-wrap: wrap;
 
-                    margin-bottom: 4rem;
+                    margin-bottom: 2.4rem;
                 }
             }
         }
@@ -38,6 +37,13 @@
         &-year {
             margin-bottom: .8rem;
             opacity: .9;
+
+            @include sm {
+                height: fit-content;
+                align-self: end;
+
+                margin-bottom: .8rem;
+            }
         }
 
         &-desc {
@@ -48,16 +54,25 @@
             margin-bottom: 4rem;
 
             @include sm {
+                
                 grid-column: 1/-1;
+                grid-row: 2/3;
 
-                @include text(22);
+                @include text(18);
+                letter-spacing: -0.02em;
+
+                margin-bottom: 2.4rem;
             }
         }
         &-cta {
             grid-column: 1/7;
 
             @include sm {
+                grid-row: 3/4;
+
                 grid-column: 1/-1;
+
+                margin-bottom: 3.2rem;
             }
         }
         &-info {
@@ -68,8 +83,9 @@
 
             @include sm {
                 grid-column: 1/-1;
+                grid-row: 4/5;
 
-                margin-bottom: 10rem;
+                margin-bottom: 3.2rem;
             }
 
             &-item {
@@ -79,6 +95,10 @@
                 column-gap: 2.8rem;
                 padding-block: 2.4rem;
 
+                @include sm {
+                    @include text(18);
+                }
+
                 &-name {
                     opacity: 0.65;
                     flex-shrink: 0;
@@ -87,6 +107,10 @@
                 &-desc {
                     text-align: end;
                     flex-grow: 0;
+
+                    @include sm {
+                        max-width: 22rem;
+                    }
                 }
 
                 .line {
