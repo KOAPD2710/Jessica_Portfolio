@@ -87,10 +87,6 @@ $txtSizes: 16, 18, 22, 24, 32, 44;
 
     --fs-44: 4.4rem;
     --lh-44: 1.2em;
-
-    @include sm {
-        --fs-24: 1.8rem;
-    }
 }
 
 .txt {

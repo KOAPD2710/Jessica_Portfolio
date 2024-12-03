@@ -42,7 +42,7 @@ const ProjectDetailHero = ({ data, ListInfo, ...props }) => {
                 </div>
                 <div className="proj-dtl-hero-info">
                     {ListInfo.map((el, idx) => (
-                        <div className="proj-dtl-hero-info-item" key={el.name}>
+                        <div className="proj-dtl-hero-info-item txt-med" key={el.name}>
                             <div className="proj-dtl-hero-info-item-name">{el.name}</div>
                             <div className="proj-dtl-hero-info-item-desc txt txt-med">{el.text}</div>
                             <div className="line line-bot" />

@@ -5,6 +5,8 @@ import * as prismic from '@prismicio/client'
 import { isEmpty } from '@/js/utils';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
+gsap.registerPlugin(ScrollTrigger)
 
 const ProjectDetailBody = ({ data, ...props }) => {
     const container = useRef()
@@ -14,11 +16,10 @@ const ProjectDetailBody = ({ data, ...props }) => {
             scrollTrigger: {
                 trigger: '.proj-dtl-body-thumb',
                 start: () => {
-                    let offsetTop = container.current.querySelector('.proj-dtl-body-thumb').offsetTop
+                    const offsetTop = container.current.querySelector('.proj-dtl-body-thumb').offsetTop
                     return `top top+=${offsetTop}`
                 },
                 scrub: true,
-                // markers: true,
             }
         })
 
@@ -45,7 +46,7 @@ const ProjectDetailBody = ({ data, ...props }) => {
                     </div>
                 </div>
                 {data.show_product_overview && (
-                    <Fragment>
+                    <div className="proj-dtl-body-block">
                         <div className="proj-dtl-body-show_product_overview-label-wrapper proj-dtl-body-label-wrapper">
                             <div className="proj-dtl-body-show_product_overview-label proj-dtl-body-label txt txt-up">({data.label_product_overview[0]?.text})</div>
                             <div className="proj-dtl-body-show_product_overview-sub proj-dtl-body-sub txt">{data.subtitle_product_overview[0]?.text}</div>
@@ -83,11 +84,11 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 ))}
                             </div>
                         )}
-                    </Fragment>
+                    </div>
                 )}
 
                 {data.show_problem && (
-                    <Fragment>
+                    <div className="proj-dtl-body-block">
                         <div className="proj-dtl-body-product_overview-label-wrapper proj-dtl-body-label-wrapper">
                             <div className="proj-dtl-body-product_overview-label proj-dtl-body-label txt txt-up">({data.label_problem[0]?.text})</div>
                             <div className="proj-dtl-body-product_overview-sub proj-dtl-body-sub txt">{data.subtitle_propblem[0]?.text}</div>
@@ -97,11 +98,11 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 <div className="proj-dtl-body-product_overview-desc txt" dangerouslySetInnerHTML={{ __html: prismic.asHTML(data.desc_problem) }} />
                             </div>
                         )}
-                    </Fragment>
+                    </div>
                 )}
 
                 {data.show_challenges && (
-                    <Fragment>
+                    <div className="proj-dtl-body-block">
                         <div className="proj-dtl-body-challenges-label-wrapper proj-dtl-body-label-wrapper">
                             <div className="proj-dtl-body-challenges-label proj-dtl-body-label txt txt-up">({data.label_challenges[0]?.text})</div>
                             <div className="proj-dtl-body-challenges-sub proj-dtl-body-sub txt">{data.subtitle_challenges[0]?.text}</div>
@@ -122,11 +123,11 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 ))}
                             </div>
                         )}
-                    </Fragment>
+                    </div>
                 )}
 
                 {data.show_progress && (
-                    <Fragment>
+                    <div className="proj-dtl-body-block">
                         <div className="proj-dtl-body-progress-label-wrapper proj-dtl-body-label-wrapper">
                             <div className="proj-dtl-body-progress-label proj-dtl-body-label txt txt-up">({data.label_progress[0]?.text})</div>
                             <div className="proj-dtl-body-progress-sub proj-dtl-body-sub txt">{data.sub_progress[0]?.text}</div>
@@ -164,10 +165,10 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 ))}
                             </div>
                         )}
-                    </Fragment>
+                    </div>
                 )}
                 {data.show_user_research && (
-                    <Fragment>
+                    <div className="proj-dtl-body-block">
                         <div className="proj-dtl-body-user_research-label-wrapper proj-dtl-body-label-wrapper">
                             <div className="proj-dtl-body-user_research-label proj-dtl-body-label txt txt-up">({data.label_user_research[0]?.text})</div>
                             <div className="proj-dtl-body-user_research-sub proj-dtl-body-sub txt">{data.subtitle_user_research[0]?.text}</div>
@@ -228,11 +229,11 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 ))}
                             </div>
                         )}
-                    </Fragment>
+                    </div>
                 )}
 
                 {data.show_proposed_solutions && (
-                    <Fragment>
+                    <div className="proj-dtl-body-block">
                         <div className="proj-dtl-body-show_proposed_solutions-label-wrapper proj-dtl-body-label-wrapper">
                             <div className="proj-dtl-body-proposed_solutions-label proj-dtl-body-label txt txt-up">({data.label_proposed_solutions[0]?.text})</div>
                             <div className="proj-dtl-body-proposed_solutions-sub proj-dtl-body-sub txt">{data.subtitle_proposed_solutions[0]?.text}</div>
@@ -260,11 +261,11 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 ))}
                             </div>
                         )}
-                    </Fragment>
+                    </div>
                 )}
 
                 {data.show_final_design && (
-                    <Fragment>
+                    <div className="proj-dtl-body-block">
                         <div className="proj-dtl-body-final_design-label-wrapper proj-dtl-body-label-wrapper">
                             <div className="proj-dtl-body-final_design-label proj-dtl-body-label txt txt-up">({data.label_final_design[0]?.text})</div>
                             <div className="proj-dtl-body-final_design-sub proj-dtl-body-sub txt">{data.subtitle_final_design[0]?.text}</div>
@@ -325,11 +326,11 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 ))}
                             </div>
                         )}
-                    </Fragment>
+                    </div>
                 )}
 
                 {data.show_result && (
-                    <Fragment>
+                    <div className="proj-dtl-body-block">
                         <div className="proj-dtl-body-result-label-wrapper proj-dtl-body-label-wrapper">
                             <div className="proj-dtl-body-result-label proj-dtl-body-label txt txt-up">({data.label_result[0]?.text})</div>
                             <div className="proj-dtl-body-result-sub proj-dtl-body-sub txt">{data.subtitle_result[0]?.text}</div>
@@ -367,11 +368,11 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 ))}
                             </div>
                         )}
-                    </Fragment>
+                    </div>
                 )}
 
                 {data.show_takeaway && (
-                    <Fragment>
+                    <div className="proj-dtl-body-block">
                         <div className="proj-dtl-body-takeaway-label-wrapper proj-dtl-body-label-wrapper">
                             <div className="proj-dtl-body-takeaway-label proj-dtl-body-label txt txt-up">({data.label_takeaway[0]?.text})</div>
                             <div className="proj-dtl-body-takeaway-sub proj-dtl-body-sub txt">{data.subtitle_takeaway[0]?.text}</div>
@@ -420,7 +421,7 @@ const ProjectDetailBody = ({ data, ...props }) => {
                                 ))}
                             </div>
                         )}
-                    </Fragment>
+                    </div>
                 )}
 
                 {

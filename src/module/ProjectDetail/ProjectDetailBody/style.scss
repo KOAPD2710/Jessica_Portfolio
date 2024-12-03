@@ -3,7 +3,11 @@
 
 
 .proj-dtl-body {
-    padding-block: 10rem 12rem;
+    padding-top: 10rem;
+
+    @include sm {
+        padding-top: unset;
+    }
 
     // @include text(22);
 
@@ -16,6 +20,37 @@
         font-weight: 500;
     }
 
+    ul {
+        list-style: none;
+        padding-left: 3.3rem;
+
+        @include sm {
+            padding-left: 2rem;
+        }
+
+        li {
+            position: relative;
+
+            &::before {
+                position: absolute;
+                content: "";
+                display: block;
+                @include size(.6rem);
+                background-color: currentColor;
+                border-radius: 100vmax;
+
+                top: 1.1rem;
+                left: -2rem;
+
+                @include sm {
+                    top: .7rem;
+                    left: -1.4rem;
+                }
+            }
+        }
+    }
+    
+
     &-thumb {
         @include size(100%, 101.25rem);
         overflow: hidden;
@@ -26,6 +61,11 @@
 
         &-wrapper {
             grid-column: 1/-1;
+            margin-bottom: 10rem;
+
+            @include sm {
+                margin-bottom: 6rem
+            }
         }
 
         &-inner {
@@ -35,6 +75,11 @@
 
     &-label {
         margin-bottom: 2rem;
+
+        @include sm {
+            margin-bottom: 1.2rem;
+            @include text(18);
+        }
         
         &-wrapper {
             grid-column: 1/4;
@@ -57,6 +102,10 @@
 
         p {
             margin-bottom: 4rem;
+
+            &:has(~ ul) {
+                margin-bottom: unset;
+            }
         }
 
         strong {
@@ -65,6 +114,33 @@
 
         *:last-child {
             margin-bottom: unset;
+        }
+    }
+
+    &-block {
+        grid-column: 1/-1;
+
+        display: grid;
+        column-gap: var(--grid-gap);
+        grid-template-columns: repeat(var(--grid-column), 1fr);
+        grid-template-rows: auto;
+
+        margin-bottom: 10rem;
+
+        @include sm {
+            margin-bottom: 6rem;
+        }
+
+        > div:last-child {
+            margin-bottom: unset;
+        }
+
+        &:last-child {
+            margin-bottom: 12rem;
+
+            @include sm {
+                margin-bottom: 6rem;
+            }
         }
     }
     &-subdesc {
@@ -87,6 +163,11 @@
 
         &-title {
             margin-bottom: 1.6rem;
+
+            @include sm {
+                @include text(24);
+                margin-bottom: 1.2rem;
+            }
         }
 
         &-desc {
@@ -101,14 +182,14 @@
     }
 
     &-label-wrapper, &-desc, &-subdesc-wrapper {
-        margin-block: 10rem 6rem;
+        margin-bottom: 6rem;
 
         &.gap-off {
             margin-top: 0rem;
         }
 
         @include sm {
-            margin-block: 4rem 2rem;
+            margin-bottom: 3.2rem;
         }
     }
     &-bigimg {
@@ -120,7 +201,7 @@
             display: grid;
             row-gap: 2rem;
 
-            margin-bottom: 2rem;
+            margin-bottom: 6rem;
         }
 
         &-txt {
@@ -162,14 +243,26 @@
             display: grid;
             grid-template-columns: repeat(var(--grid-column), 1fr);
             row-gap: 6rem;
-            margin-block: 4rem;
+            margin-bottom: 4rem;
+
+            @include sm {
+                row-gap: 3.2rem;
+            }
         }
 
         &-content {
             grid-column: 9/-1;
 
+            @include sm {
+                grid-column: 1/-1;
+            }
+
             &-title {
                 margin-bottom: 2.4rem;
+
+                @include sm {
+                    margin-bottom: 1.2rem;
+                }
             }
 
             &-desc {
@@ -202,7 +295,7 @@
     &-coming {
         grid-column: 9/-1;
 
-        margin-block: 10rem 6rem;
+        margin-bottom: 12rem;
 
         @include sm {
             grid-column: 1/-1;
